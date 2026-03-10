@@ -8,10 +8,18 @@ const path = require('path');
 const fs = require('fs');
 const config = require('../config/env');
 
-// إنشاء مجلد logs إذا لم يكن موجوداً
-const logsDir = path.join(__dirname, '..', 'logs');
-if (!fs.existsSync(logsDir)) {
+// التحقق من بيئة Vercel
+const isVercel = process.env.VERCEL === '1' || process.env.NODE_ENV === 'production';
+
+// إنشاء مجلد logs فقط إذا لم نكن في Vercel
+let logsDir = path.join(__dirname, '..', 'logs');
+if (!isVercel && !fs.existsSync(logsDir)) {
     fs.mkdirSync(logsDir, { recursive: true });
+}
+
+// في Vercel، لا نستخدم ملفات السجلات
+if (isVercel) {
+    logsDir = null; // لا نستخدم الملفات في Vercel
 }
 
 // تنسيق السجلات
@@ -35,57 +43,57 @@ const consoleFormat = winston.format.combine(
     })
 );
 
+// إنشاء transports للـ logger
+const transports = [];
+
+// في بيئة التطوير، أضف Console transport
+if (config.nodeEnv !== 'production') {
+    transports.push(new winston.transports.Console({
+        format: consoleFormat
+    }));
+}
+
+// في بيئة الإنتاج المحلية، أضف ملفات السجلات
+if (!isVercel && config.nodeEnv === 'production') {
+    // كتابة الأخطاء في ملف منفصل
+    transports.push(new winston.transports.File({
+        filename: path.join(logsDir, 'error.log'),
+        level: 'error',
+        maxsize: 5242880, // 5MB
+        maxFiles: 5,
+    }));
+
+    // كتابة جميع السجلات في ملف
+    transports.push(new winston.transports.File({
+        filename: path.join(logsDir, 'combined.log'),
+        maxsize: 5242880, // 5MB
+        maxFiles: 5,
+    }));
+}
+
 // إنشاء Logger
 const logger = winston.createLogger({
     level: config.nodeEnv === 'production' ? 'info' : 'debug',
     format: logFormat,
     defaultMeta: { service: 'manahl-badr-api' },
-    transports: [
-        // كتابة الأخطاء في ملف منفصل
-        new winston.transports.File({
-            filename: path.join(logsDir, 'error.log'),
-            level: 'error',
-            maxsize: 5242880, // 5MB
-            maxFiles: 5,
-        }),
-        // كتابة جميع السجلات في ملف
-        new winston.transports.File({
-            filename: path.join(logsDir, 'combined.log'),
-            maxsize: 5242880, // 5MB
-            maxFiles: 5,
-        }),
-    ],
-    // معالجة الاستثناءات غير المعالجة
-    exceptionHandlers: [
-        new winston.transports.File({
-            filename: path.join(logsDir, 'exceptions.log'),
-        }),
-    ],
-    // معالجة الوعود المرفوضة
-    rejectionHandlers: [
-        new winston.transports.File({
-            filename: path.join(logsDir, 'rejections.log'),
-        }),
-    ],
+    transports: transports,
 });
 
-// في بيئة التطوير، أضف Console transport
-if (config.nodeEnv !== 'production') {
-    logger.add(new winston.transports.Console({
-        format: consoleFormat
-    }));
+// معالجة الاستثناءات غير المعالجة (فقط في البيئة المحلية)
+if (!isVercel) {
+    logger.exceptions = new winston.transports.File({
+        filename: path.join(logsDir, 'exceptions.log'),
+    });
+
+    logger.rejections = new winston.transports.File({
+        filename: path.join(logsDir, 'rejections.log'),
+    });
 }
 
 // دوال مساعدة
 logger.info('✅ Logger initialized');
 
 module.exports = logger;
-
-
-
-
-
-
 
 
 
