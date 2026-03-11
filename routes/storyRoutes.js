@@ -16,9 +16,16 @@ const config = require('../config/env');
 const router = express.Router();
 
 // مجلد رفع وسائط الحالات/الإعلانات (صورة أو فيديو من المعرض)
-const storyMediaDir = path.join(__dirname, '..', 'uploads', 'stories');
-if (!fs.existsSync(storyMediaDir)) {
-    fs.mkdirSync(storyMediaDir, { recursive: true });
+// التحقق من بيئة Vercel
+const isVercel = process.env.VERCEL === '1' || process.env.NODE_ENV === 'production';
+
+// في Vercel، لا نستخدم مجلد uploads
+let storyMediaDir;
+if (!isVercel) {
+    storyMediaDir = path.join(__dirname, '..', 'uploads', 'stories');
+    if (!fs.existsSync(storyMediaDir)) {
+        fs.mkdirSync(storyMediaDir, { recursive: true });
+    }
 }
 const storyMediaStorage = multer.diskStorage({
     destination: (req, file, cb) => cb(null, storyMediaDir),

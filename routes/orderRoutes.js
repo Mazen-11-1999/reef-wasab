@@ -20,6 +20,14 @@ const router = express.Router();
 // File upload for shipping receipt
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
+        // التحقق من بيئة Vercel
+        const isVercel = process.env.VERCEL === '1' || process.env.NODE_ENV === 'production';
+
+        // في Vercel، لا نستخدم مجلد uploads
+        if (isVercel) {
+            return cb(new Error('File upload not available in production'));
+        }
+
         const uploadDir = 'uploads/receipts';
         if (!fs.existsSync(uploadDir)) {
             fs.mkdirSync(uploadDir, { recursive: true });

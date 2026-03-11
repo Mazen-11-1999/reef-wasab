@@ -13,8 +13,15 @@ const { authenticateToken, requireAdmin } = require('../middleware/auth');
 const router = express.Router();
 
 // رفع صورة الملف الشخصي (avatars)
-const avatarDir = path.join(process.cwd(), 'uploads', 'avatars');
-if (!fs.existsSync(avatarDir)) fs.mkdirSync(avatarDir, { recursive: true });
+// التحقق من بيئة Vercel
+const isVercel = process.env.VERCEL === '1' || process.env.NODE_ENV === 'production';
+
+// في Vercel، لا نستخدم مجلد uploads
+let avatarDir;
+if (!isVercel) {
+    avatarDir = path.join(process.cwd(), 'uploads', 'avatars');
+    if (!fs.existsSync(avatarDir)) fs.mkdirSync(avatarDir, { recursive: true });
+}
 const avatarStorage = multer.diskStorage({
     destination: (req, file, cb) => cb(null, avatarDir),
     filename: (req, file, cb) => {

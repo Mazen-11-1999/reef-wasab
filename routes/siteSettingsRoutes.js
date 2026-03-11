@@ -14,8 +14,16 @@ const config = require('../config/env');
 const router = express.Router();
 
 // رفع الشعار — نفس إعدادات الـ upload في server.js (صور فقط)
+// التحقق من بيئة Vercel
+const isVercel = process.env.VERCEL === '1' || process.env.NODE_ENV === 'production';
+
 const logoStorage = multer.diskStorage({
     destination: (req, file, cb) => {
+        // في Vercel، لا نستخدم مجلد uploads
+        if (isVercel) {
+            return cb(new Error('File upload not available in production'));
+        }
+
         const uploadDir = 'uploads';
         if (!fs.existsSync(uploadDir)) {
             fs.mkdirSync(uploadDir, { recursive: true });
@@ -41,9 +49,13 @@ const uploadLogo = multer({
 });
 
 // تخزين صور معرض قصتنا (حتى 6)
-const storyGalleryDir = path.join(__dirname, '..', 'uploads', 'story-gallery');
-if (!fs.existsSync(storyGalleryDir)) {
-    fs.mkdirSync(storyGalleryDir, { recursive: true });
+// التحقق من بيئة Vercel
+let storyGalleryDir;
+if (!isVercel) {
+    storyGalleryDir = path.join(__dirname, '..', 'uploads', 'story-gallery');
+    if (!fs.existsSync(storyGalleryDir)) {
+        fs.mkdirSync(storyGalleryDir, { recursive: true });
+    }
 }
 const storyGalleryStorage = multer.diskStorage({
     destination: (req, file, cb) => cb(null, storyGalleryDir),
