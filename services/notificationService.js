@@ -233,7 +233,7 @@ const saveSubscription = async (userId, subscription) => {
             logger.warn('PushSubscription model not found, using file fallback');
             PushSubscription = null;
         }
-        
+
         if (PushSubscription) {
             // التحقق من وجود اشتراك سابق
             const existing = await PushSubscription.findOne({
@@ -260,7 +260,7 @@ const saveSubscription = async (userId, subscription) => {
         const fs = require('fs');
         const path = require('path');
         const subscriptionsFile = path.join(__dirname, '../data/push-subscriptions.json');
-        
+
         let subscriptions = {};
         try {
             if (fs.existsSync(subscriptionsFile)) {
@@ -287,9 +287,14 @@ const saveSubscription = async (userId, subscription) => {
         });
 
         // إنشاء المجلد إذا لم يكن موجوداً
-        const dataDir = path.dirname(subscriptionsFile);
-        if (!fs.existsSync(dataDir)) {
-            fs.mkdirSync(dataDir, { recursive: true });
+        // التحقق من بيئة Vercel
+        const isVercel = process.env.VERCEL === '1' || process.env.NODE_ENV === 'production';
+
+        if (!isVercel) {
+            const dataDir = path.dirname(subscriptionsFile);
+            if (!fs.existsSync(dataDir)) {
+                fs.mkdirSync(dataDir, { recursive: true });
+            }
         }
 
         fs.writeFileSync(subscriptionsFile, JSON.stringify(subscriptions, null, 2));
@@ -311,7 +316,7 @@ const removeSubscription = async (userId, subscription) => {
             logger.warn('PushSubscription model not found, using file fallback');
             PushSubscription = null;
         }
-        
+
         if (PushSubscription) {
             return await PushSubscription.findOneAndDelete({
                 userId: userId,
@@ -324,20 +329,20 @@ const removeSubscription = async (userId, subscription) => {
         const fs = require('fs');
         const path = require('path');
         const subscriptionsFile = path.join(__dirname, '../data/push-subscriptions.json');
-        
+
         if (fs.existsSync(subscriptionsFile)) {
             let subscriptions = JSON.parse(fs.readFileSync(subscriptionsFile, 'utf8'));
             const userIdStr = userId.toString();
-            
+
             if (subscriptions[userIdStr]) {
                 subscriptions[userIdStr] = subscriptions[userIdStr].filter(
                     sub => sub.subscription && sub.subscription.endpoint !== subscription.endpoint
                 );
-                
+
                 if (subscriptions[userIdStr].length === 0) {
                     delete subscriptions[userIdStr];
                 }
-                
+
                 fs.writeFileSync(subscriptionsFile, JSON.stringify(subscriptions, null, 2));
                 logger.info('Push subscription removed from file (fallback)');
             }
@@ -385,12 +390,12 @@ const sendBulkNotification = async (title, message, options = {}) => {
                 const Order = require('../models/Order');
                 const ninetyDaysAgo = new Date();
                 ninetyDaysAgo.setDate(ninetyDaysAgo.getDate() - 90);
-                
+
                 const activeOrders = await Order.find({
                     createdAt: { $gte: ninetyDaysAgo },
                     'customer.phone': { $exists: true, $ne: null }
                 }).distinct('customer.phone');
-                
+
                 if (activeOrders.length > 0) {
                     customerQuery.phone = { $in: activeOrders };
                 } else {
@@ -402,12 +407,12 @@ const sendBulkNotification = async (title, message, options = {}) => {
                 const Order2 = require('../models/Order');
                 const oneYearAgo = new Date();
                 oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
-                
+
                 const recentOrders = await Order2.find({
                     createdAt: { $gte: oneYearAgo },
                     'customer.phone': { $exists: true, $ne: null }
                 }).distinct('customer.phone');
-                
+
                 if (recentOrders.length > 0) {
                     customerQuery.phone = { $nin: recentOrders };
                 }
@@ -446,10 +451,10 @@ const sendBulkNotification = async (title, message, options = {}) => {
                             // Model غير موجود - تخطي Push Notifications
                             logger.warn('PushSubscription model not found, skipping push notifications');
                         }
-                        
+
                         if (PushSubscription) {
                             const subscriptions = await PushSubscription.find({ userId: customer.user._id });
-                            
+
                             // إعداد VAPID
                             if (config.vapidPublicKey && config.vapidPrivateKey) {
                                 webpush.setVapidDetails(

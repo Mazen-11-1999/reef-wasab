@@ -300,6 +300,14 @@ const Category = require('./models/Category');
 const multer = require('multer');
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
+        // التحقق من بيئة Vercel
+        const isVercel = process.env.VERCEL === '1' || process.env.NODE_ENV === 'production';
+
+        // في Vercel، لا نستخدم مجلد uploads
+        if (isVercel) {
+            return cb(new Error('File upload not available in production'));
+        }
+
         const uploadDir = 'uploads';
         if (!fs.existsSync(uploadDir)) {
             fs.mkdirSync(uploadDir, { recursive: true });
@@ -331,6 +339,14 @@ const upload = multer({
 // Upload configuration for stories (images and videos)
 const storyStorage = multer.diskStorage({
     destination: (req, file, cb) => {
+        // التحقق من بيئة Vercel
+        const isVercel = process.env.VERCEL === '1' || process.env.NODE_ENV === 'production';
+
+        // في Vercel، لا نستخدم مجلد uploads
+        if (isVercel) {
+            return cb(new Error('File upload not available in production'));
+        }
+
         const uploadDir = 'uploads/stories';
         if (!fs.existsSync(uploadDir)) {
             fs.mkdirSync(uploadDir, { recursive: true });

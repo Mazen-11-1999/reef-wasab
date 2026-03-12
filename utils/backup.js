@@ -13,19 +13,26 @@ const logger = require('./logger');
 const execAsync = promisify(exec);
 
 // مجلد النسخ الاحتياطي
-const BACKUP_DIR = path.join(__dirname, '..', 'backups');
-const DB_BACKUP_DIR = path.join(BACKUP_DIR, 'database');
-const FILES_BACKUP_DIR = path.join(BACKUP_DIR, 'files');
+// التحقق من بيئة Vercel
+const isVercel = process.env.VERCEL === '1' || process.env.NODE_ENV === 'production';
 
-// إنشاء المجلدات إذا لم تكن موجودة
-if (!fs.existsSync(BACKUP_DIR)) {
-    fs.mkdirSync(BACKUP_DIR, { recursive: true });
-}
-if (!fs.existsSync(DB_BACKUP_DIR)) {
-    fs.mkdirSync(DB_BACKUP_DIR, { recursive: true });
-}
-if (!fs.existsSync(FILES_BACKUP_DIR)) {
-    fs.mkdirSync(FILES_BACKUP_DIR, { recursive: true });
+// في Vercel، لا نستخدم مجلد backups
+let BACKUP_DIR, DB_BACKUP_DIR, FILES_BACKUP_DIR;
+if (!isVercel) {
+    BACKUP_DIR = path.join(__dirname, '..', 'backups');
+    DB_BACKUP_DIR = path.join(BACKUP_DIR, 'database');
+    FILES_BACKUP_DIR = path.join(BACKUP_DIR, 'files');
+
+    // إنشاء المجلدات إذا لم تكن موجودة
+    if (!fs.existsSync(BACKUP_DIR)) {
+        fs.mkdirSync(BACKUP_DIR, { recursive: true });
+    }
+    if (!fs.existsSync(DB_BACKUP_DIR)) {
+        fs.mkdirSync(DB_BACKUP_DIR, { recursive: true });
+    }
+    if (!fs.existsSync(FILES_BACKUP_DIR)) {
+        fs.mkdirSync(FILES_BACKUP_DIR, { recursive: true });
+    }
 }
 
 /**
@@ -40,10 +47,10 @@ const backupDatabase = async () => {
         // استخراج معلومات الاتصال من URI
         const uri = config.mongodbUri;
         const dbName = uri.split('/').pop().split('?')[0];
-        
+
         // بناء أمر mongodump
         let mongodumpCmd = `mongodump --db ${dbName} --out "${backupPath}"`;
-        
+
         // إذا كان URI يحتوي على معلومات الاتصال
         if (uri.includes('@')) {
             const match = uri.match(/mongodb:\/\/([^:]+):([^@]+)@([^\/]+)\/(.+)/);
@@ -57,9 +64,9 @@ const backupDatabase = async () => {
         }
 
         logger.info(`Starting database backup: ${backupName}`);
-        
+
         const { stdout, stderr } = await execAsync(mongodumpCmd);
-        
+
         if (stderr && !stderr.includes('writing')) {
             throw new Error(stderr);
         }
@@ -67,7 +74,7 @@ const backupDatabase = async () => {
         // ضغط النسخة الاحتياطية
         const zipPath = `${backupPath}.tar.gz`;
         await execAsync(`tar -czf "${zipPath}" -C "${DB_BACKUP_DIR}" "${backupName}"`);
-        
+
         // حذف المجلد غير المضغوط
         fs.rmSync(backupPath, { recursive: true, force: true });
 
@@ -98,10 +105,16 @@ const backupDatabase = async () => {
  */
 const backupFiles = async () => {
     try {
+        // التحقق من بيئة Vercel
+        if (isVercel) {
+            logger.info('Backup files not available in Vercel environment');
+            return { success: false, message: 'Backup not available in production' };
+        }
+
         const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
         const backupName = `files-backup-${timestamp}`;
         const backupPath = path.join(FILES_BACKUP_DIR, backupName);
-        
+
         fs.mkdirSync(backupPath, { recursive: true });
 
         // الملفات والمجلدات المهمة للنسخ
@@ -133,7 +146,7 @@ const backupFiles = async () => {
         // ضغط النسخة الاحتياطية
         const zipPath = `${backupPath}.tar.gz`;
         await execAsync(`tar -czf "${zipPath}" -C "${FILES_BACKUP_DIR}" "${backupName}"`);
-        
+
         // حذف المجلد غير المضغوط
         fs.rmSync(backupPath, { recursive: true, force: true });
 
@@ -165,7 +178,7 @@ const backupFiles = async () => {
 const backupAll = async () => {
     try {
         logger.info('🔄 Starting full backup...');
-        
+
         const dbBackup = await backupDatabase();
         const filesBackup = await backupFiles();
 
@@ -273,7 +286,7 @@ const listBackups = (type = 'all') => {
 const restoreDatabase = async (backupFilename) => {
     try {
         const backupPath = path.join(DB_BACKUP_DIR, backupFilename);
-        
+
         if (!fs.existsSync(backupPath)) {
             throw new Error(`Backup file not found: ${backupFilename}`);
         }
@@ -287,7 +300,7 @@ const restoreDatabase = async (backupFilename) => {
         // استخراج اسم قاعدة البيانات من المجلد المستخرج
         const extractedDirs = fs.readdirSync(DB_BACKUP_DIR)
             .filter(dir => dir.startsWith('mongodb-backup-') && !dir.endsWith('.tar.gz'));
-        
+
         if (extractedDirs.length === 0) {
             throw new Error('No database directory found in backup');
         }
@@ -299,7 +312,7 @@ const restoreDatabase = async (backupFilename) => {
         // استعادة قاعدة البيانات
         const uri = config.mongodbUri;
         let mongorestoreCmd = `mongorestore --db ${dbName} "${dbPath}" --drop`;
-        
+
         if (uri.includes('@')) {
             const match = uri.match(/mongodb:\/\/([^:]+):([^@]+)@([^\/]+)\/(.+)/);
             if (match) {
@@ -309,7 +322,7 @@ const restoreDatabase = async (backupFilename) => {
         }
 
         const { stdout, stderr } = await execAsync(mongorestoreCmd);
-        
+
         if (stderr && !stderr.includes('restoring')) {
             throw new Error(stderr);
         }
