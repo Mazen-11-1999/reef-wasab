@@ -122,7 +122,7 @@ if (!isVercel) {
 // Static files
 app.use('/uploads', express.static('uploads'));
 app.use(express.static(path.join(__dirname, 'frontend'))); // Serve static files from frontend directory
-app.use(express.static('.')); // Fallback for backward compatibility
+// Removed dangerous express.static('.') that exposed all project files
 
 // ============================================
 // ROUTES
@@ -217,7 +217,7 @@ app.post('/api/admin/login', async (req, res) => {
 });
 
 // Admin Change Password Route
-app.put('/api/admin/change-password', async (req, res) => {
+app.put('/api/admin/change-password', authenticateToken, async (req, res) => {
     try {
         const { currentPassword, newPassword } = req.body;
 

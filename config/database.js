@@ -8,7 +8,7 @@ const config = require('./env');
 
 // تحسينات الاتصال (تدعم عدداً كبيراً من المستخدمين)
 const connectionOptions = {
-    maxPoolSize: 20, // مجمع اتصالات أكبر لتحمل الحمل
+    maxPoolSize: 2, // تقليل حجم التجمع للبيئة Serverless
     serverSelectionTimeoutMS: 10000, // 10 ثوانٍ للاتصال (مثلاً Atlas)
     socketTimeoutMS: 60000, // 60 ثانية قبل إغلاق المقبس الخامل
     family: 4,
@@ -41,9 +41,9 @@ process.on('SIGINT', async () => {
  */
 const connectDB = async () => {
     try {
-        console.log(`🔄 محاولة الاتصال بـ MongoDB على: ${config.mongodbUri}`);
+        console.log('🔄 محاولة الاتصال بـ MongoDB...');
         console.log('⏱️  مهلة الاتصال: 15 ثانية...');
-        
+
         // محاولة تحميل databaseOptimization بشكل آمن
         let dbOptimization;
         try {
@@ -52,15 +52,15 @@ const connectDB = async () => {
             console.warn('⚠️  databaseOptimization غير متاح:', optError.message);
             dbOptimization = {
                 optimizeConnection: () => ({}),
-                createIndexes: async () => {}
+                createIndexes: async () => { }
             };
         }
-        
+
         const optimizedOptions = { ...connectionOptions, ...dbOptimization.optimizeConnection() };
-        
+
         // إزالة bufferMaxEntries إذا كان موجوداً (غير مدعوم في MongoDB الحديث)
         delete optimizedOptions.bufferMaxEntries;
-        
+
         // ضبط timeout حسب البيئة (تطوير / إنتاج)
         if (config.nodeEnv === 'development') {
             optimizedOptions.serverSelectionTimeoutMS = 20000;
@@ -69,15 +69,15 @@ const connectDB = async () => {
             optimizedOptions.serverSelectionTimeoutMS = 15000; // إنتاج: 15 ثانية
             optimizedOptions.connectTimeoutMS = 15000;
         }
-        
+
         console.log('📡 بدء الاتصال بـ MongoDB...');
-        
+
         // في بيئة التطوير، استخدم الاتصال العادي بدون Promise.race إضافي
         if (config.nodeEnv === 'development') {
             await mongoose.connect(config.mongodbUri, optimizedOptions);
             // انتظار قصير للتحقق من حالة الاتصال
             await new Promise(resolve => setTimeout(resolve, 100));
-            
+
             // التحقق من حالة الاتصال قبل طباعة الرسالة
             if (mongoose.connection.readyState === 1) {
                 console.log('✅ اتصال MongoDB ناجح');
@@ -93,7 +93,7 @@ const connectDB = async () => {
                 throw new Error('الاتصال فشل - readyState: ' + mongoose.connection.readyState);
             }
         }
-        
+
         // إنشاء Indexes بعد الاتصال (فقط إذا كان الاتصال ناجح)
         if (mongoose.connection.readyState === 1 && config.nodeEnv !== 'test') {
             setTimeout(async () => {
@@ -104,7 +104,7 @@ const connectDB = async () => {
                 }
             }, 2000); // انتظار 2 ثانية لضمان اكتمال الاتصال
         }
-        
+
         // إرجاع الاتصال فقط إذا كان متصلاً
         if (mongoose.connection.readyState === 1) {
             return mongoose.connection;
@@ -122,7 +122,7 @@ const connectDB = async () => {
             // في بيئة التطوير، نعيد null بدلاً من رمي الخطأ
             return null;
         }
-        
+
         // في الإنتاج، نوقف الخادم
         console.error('❌ فشل الاتصال بقاعدة البيانات:', error.message);
         console.error('❌ لا يمكن تشغيل الخادم بدون قاعدة البيانات في بيئة الإنتاج');
