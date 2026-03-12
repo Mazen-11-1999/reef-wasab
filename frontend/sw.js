@@ -131,14 +131,14 @@ async function saveNotificationToCache(notificationData) {
         const db = await openNotificationDB();
         const transaction = db.transaction(['notifications'], 'readwrite');
         const store = transaction.objectStore('notifications');
-        
+
         await store.add({
             ...notificationData,
             id: Date.now(),
             timestamp: Date.now(),
             read: false
         });
-        
+
         console.log('[Service Worker] Notification saved to cache');
     } catch (error) {
         console.error('[Service Worker] Error saving notification:', error);
@@ -149,10 +149,10 @@ async function saveNotificationToCache(notificationData) {
 function openNotificationDB() {
     return new Promise((resolve, reject) => {
         const request = indexedDB.open('NotificationsDB', 1);
-        
+
         request.onerror = () => reject(request.error);
         request.onsuccess = () => resolve(request.result);
-        
+
         request.onupgradeneeded = (event) => {
             const db = event.target.result;
             if (!db.objectStoreNames.contains('notifications')) {
@@ -191,7 +191,7 @@ async function getCachedNotifications() {
         const store = transaction.objectStore('notifications');
         const index = store.index('timestamp');
         const request = index.getAll();
-        
+
         return new Promise((resolve) => {
             request.onsuccess = () => {
                 const notifications = request.result.reverse(); // الأحدث أولاً

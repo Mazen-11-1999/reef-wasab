@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بوابة إدارة المالك  | مناحل ريف وصاب</title>
+    <title>بوابة إدارة المالك | مناحل ريف وصاب</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+    <!-- Vercel Analytics -->
+    <script src="https://cdn.vercel-insights.com/v1/script.js"></script>
     <style>
         :root {
             --royal-gold: #f4c025;
@@ -14,7 +18,13 @@
             --velvet-brown: #1a1608;
             --deep-brown: #2d2612;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Tajawal', sans-serif;
             background: linear-gradient(135deg, var(--velvet-brown), var(--dark-brown));
@@ -26,6 +36,7 @@
             justify-content: center;
             padding: 20px;
         }
+
         .secure-badge {
             position: fixed;
             top: 16px;
@@ -36,6 +47,7 @@
             color: var(--royal-gold);
             font-size: 0.9rem;
         }
+
         .logo-wrap {
             width: 90px;
             height: 90px;
@@ -48,8 +60,23 @@
             box-shadow: 0 0 30px rgba(244, 192, 37, 0.4);
             font-size: 2rem;
         }
-        .title { font-size: 1.75rem; font-weight: 800; color: var(--royal-gold); margin-bottom: 6px; text-align: center; }
-        .subtitle { font-size: 0.95rem; color: var(--cream-gold); opacity: 0.9; margin-bottom: 28px; text-align: center; }
+
+        .title {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--royal-gold);
+            margin-bottom: 6px;
+            text-align: center;
+        }
+
+        .subtitle {
+            font-size: 0.95rem;
+            color: var(--cream-gold);
+            opacity: 0.9;
+            margin-bottom: 28px;
+            text-align: center;
+        }
+
         .card {
             width: 100%;
             max-width: 380px;
@@ -57,21 +84,40 @@
             border: 1px solid rgba(244, 192, 37, 0.25);
             border-radius: 20px;
             padding: 28px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
         }
-        .field { margin-bottom: 20px; }
-        .field label { display: block; margin-bottom: 8px; color: var(--cream-gold); font-weight: 500; }
+
+        .field {
+            margin-bottom: 20px;
+        }
+
+        .field label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--cream-gold);
+            font-weight: 500;
+        }
+
         .field input {
             width: 100%;
             padding: 14px 16px;
             border: 1px solid rgba(244, 192, 37, 0.3);
             border-radius: 12px;
-            background: rgba(0,0,0,0.25);
+            background: rgba(0, 0, 0, 0.25);
             color: var(--cream-gold);
             font-size: 1rem;
         }
-        .field input::placeholder { color: rgba(255,244,209,0.5); }
-        .field input:focus { outline: none; border-color: var(--royal-gold); box-shadow: 0 0 0 2px rgba(244,192,37,0.2); }
+
+        .field input::placeholder {
+            color: rgba(255, 244, 209, 0.5);
+        }
+
+        .field input:focus {
+            outline: none;
+            border-color: var(--royal-gold);
+            box-shadow: 0 0 0 2px rgba(244, 192, 37, 0.2);
+        }
+
         .btn {
             width: 100%;
             padding: 16px;
@@ -87,30 +133,72 @@
             gap: 10px;
             font-family: inherit;
         }
+
         .btn-primary {
             background: linear-gradient(135deg, var(--royal-gold), #b8860b);
             color: var(--velvet-brown);
             margin-bottom: 12px;
         }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(244,192,37,0.4); }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(244, 192, 37, 0.4);
+        }
+
         .btn-fingerprint {
             background: linear-gradient(145deg, #493f22, var(--deep-brown));
             color: var(--royal-gold);
             border: 1px solid rgba(244, 192, 37, 0.4);
         }
-        .btn-fingerprint:hover { background: rgba(244,192,37,0.15); border-color: var(--royal-gold); transform: translateY(-2px); }
-        .btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+
+        .btn-fingerprint:hover {
+            background: rgba(244, 192, 37, 0.15);
+            border-color: var(--royal-gold);
+            transform: translateY(-2px);
+        }
+
+        .btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
         .footer-links {
             margin-top: 24px;
             display: flex;
             justify-content: space-between;
             font-size: 0.9rem;
         }
-        .footer-links a { color: var(--royal-gold); text-decoration: none; }
-        .footer-links a:hover { text-decoration: underline; }
-        .msg { text-align: center; padding: 10px; border-radius: 10px; margin-bottom: 16px; font-size: 0.9rem; display: none; }
-        .msg.error { background: rgba(255,107,107,0.2); color: #ff6b6b; display: block; }
-        .msg.success { background: rgba(81,207,102,0.2); color: #51cf66; display: block; }
+
+        .footer-links a {
+            color: var(--royal-gold);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .msg {
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 16px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .msg.error {
+            background: rgba(255, 107, 107, 0.2);
+            color: #ff6b6b;
+            display: block;
+        }
+
+        .msg.success {
+            background: rgba(81, 207, 102, 0.2);
+            color: #51cf66;
+            display: block;
+        }
 
         /* طبقة مسح البصمة */
         .fingerprint-overlay {
@@ -124,7 +212,11 @@
             flex-direction: column;
             gap: 24px;
         }
-        .fingerprint-overlay.active { display: flex; }
+
+        .fingerprint-overlay.active {
+            display: flex;
+        }
+
         .fingerprint-circle {
             width: 140px;
             height: 140px;
@@ -135,23 +227,54 @@
             justify-content: center;
             animation: pulse-ring 1.5s ease-in-out infinite;
         }
+
         .fingerprint-icon {
             font-size: 64px;
             color: var(--royal-gold);
             animation: finger-glow 1.2s ease-in-out infinite;
         }
-        .fingerprint-text { color: var(--cream-gold); font-size: 1.1rem; }
-        .fingerprint-cancel { margin-top: 12px; color: var(--royal-gold); cursor: pointer; text-decoration: underline; font-size: 0.9rem; }
-        @keyframes pulse-ring {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(244, 192, 37, 0.4); }
-            50% { box-shadow: 0 0 0 20px rgba(244, 192, 37, 0); }
+
+        .fingerprint-text {
+            color: var(--cream-gold);
+            font-size: 1.1rem;
         }
+
+        .fingerprint-cancel {
+            margin-top: 12px;
+            color: var(--royal-gold);
+            cursor: pointer;
+            text-decoration: underline;
+            font-size: 0.9rem;
+        }
+
+        @keyframes pulse-ring {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(244, 192, 37, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 0 0 20px rgba(244, 192, 37, 0);
+            }
+        }
+
         @keyframes finger-glow {
-            0%, 100% { opacity: 1; filter: drop-shadow(0 0 8px var(--royal-gold)); }
-            50% { opacity: 0.85; filter: drop-shadow(0 0 16px var(--royal-gold)); }
+
+            0%,
+            100% {
+                opacity: 1;
+                filter: drop-shadow(0 0 8px var(--royal-gold));
+            }
+
+            50% {
+                opacity: 0.85;
+                filter: drop-shadow(0 0 16px var(--royal-gold));
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="secure-badge"><i class="fas fa-lock"></i><span>آمن</span></div>
 
@@ -164,7 +287,8 @@
         <form id="loginForm">
             <div class="field">
                 <label for="password">كلمة المرور</label>
-                <input type="password" id="password" name="password" placeholder="أدخل كلمة المرور" autocomplete="current-password" minlength="6">
+                <input type="password" id="password" name="password" placeholder="أدخل كلمة المرور"
+                    autocomplete="current-password" minlength="6">
             </div>
             <button type="submit" class="btn btn-primary" id="btnPassword">
                 <span>دخول للوحة التحكم</span>
@@ -175,10 +299,12 @@
             <i class="fas fa-fingerprint" style="font-size: 1.4rem;"></i>
             <span>تسجيل الدخول بالبصمة</span>
         </button>
-        <p class="subtitle" style="margin-top:12px; font-size:0.85rem; opacity:0.85;">فقط البصمة المسجّلة من لوحة التحكم (بعد الدخول بكلمة المرور) تسمح بالدخول — لا يقبل غيرها.</p>
+        <p class="subtitle" style="margin-top:12px; font-size:0.85rem; opacity:0.85;">فقط البصمة المسجّلة من لوحة التحكم
+            (بعد الدخول بكلمة المرور) تسمح بالدخول — لا يقبل غيرها.</p>
         <div class="footer-links">
             <a href="#" onclick="alert('الدعم الفني: راجع إعدادات الموقع'); return false;">الدعم الفني</a>
-            <a href="#" onclick="alert('نسيت كلمة المرور: تواصل مع المطور أو راجع .env'); return false;">نسيت كلمة المرور؟</a>
+            <a href="#" onclick="alert('نسيت كلمة المرور: تواصل مع المطور أو راجع .env'); return false;">نسيت كلمة
+                المرور؟</a>
         </div>
     </div>
 
@@ -194,7 +320,7 @@
     <script src="../js/api.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@simplewebauthn/browser@13.2.2/dist/bundle.umd.min.js"></script>
     <script>
-        (function() {
+        (function () {
             const API_BASE = window.location.origin;
             const loginMsg = document.getElementById('loginMsg');
             const loginForm = document.getElementById('loginForm');
@@ -221,7 +347,7 @@
             }
 
             // دخول بكلمة المرور
-            loginForm.addEventListener('submit', async function(e) {
+            loginForm.addEventListener('submit', async function (e) {
                 e.preventDefault();
                 hideMsg();
                 const password = passwordInput.value.trim();
@@ -256,12 +382,12 @@
                 fingerprintOverlay.classList.toggle('active', !!show);
                 fingerprintOverlay.setAttribute('aria-hidden', !show);
             }
-            fingerprintCancel.addEventListener('click', function() {
+            fingerprintCancel.addEventListener('click', function () {
                 showFingerprintOverlay(false);
             });
 
             // دخول بالبصمة (WebAuthn)
-            btnFingerprint.addEventListener('click', async function() {
+            btnFingerprint.addEventListener('click', async function () {
                 if (!window.PublicKeyCredential) {
                     showMsg('المتصفح أو الجهاز لا يدعم تسجيل الدخول بالبصمة.', 'error');
                     return;
@@ -311,14 +437,15 @@
                 const token = typeof getAuthToken === 'function' ? getAuthToken() : (localStorage.getItem('authToken') || localStorage.getItem('adminToken'));
                 if (!token) return;
                 fetch(API_BASE + '/api/auth/me', { headers: { 'Authorization': 'Bearer ' + token } })
-                    .then(function(r) { return r.json(); })
-                    .then(function(data) {
+                    .then(function (r) { return r.json(); })
+                    .then(function (data) {
                         var user = data.user || data;
                         if (user && user.role === 'admin') goToDashboard();
                     })
-                    .catch(function() {});
+                    .catch(function () { });
             })();
         })();
     </script>
 </body>
+
 </html>

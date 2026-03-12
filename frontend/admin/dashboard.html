@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لوحة إدارة المالك بدر العلوي   | مناحل ريف وصاب</title>
+    <title>لوحة إدارة المالك بدر العلوي | مناحل ريف وصاب</title>
 
     <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -15,6 +15,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Cairo:wght@200;300;400;500;600;700;800;900;1000&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap"
         rel="stylesheet">
+
+    <!-- Vercel Analytics -->
+    <script src="https://cdn.vercel-insights.com/v1/script.js"></script>
 
     <!-- Modern Design System -->
     <link rel="stylesheet" href="../assets/css/modern-design.css">
@@ -842,9 +845,9 @@
                     <h1 class="dashboard-title" style="margin: 0;">
                         <span>👑</span>
                         <span>لوحة إدارة المالك بدر العلوي </span>
-                        
+
                     </h1>
-                   
+
                 </div>
             </div>
         </div>
@@ -1097,7 +1100,8 @@
                                         style="width: 100%; padding: 12px; background: rgba(0,0,0,0.3); border: 1px solid var(--border-gold); border-radius: 8px; color: var(--text-primary);">
                                         <option value="">جاري تحميل الفئات...</option>
                                     </select>
-                                    <a href="categories.html" style="color: var(--gold-primary); font-size: 0.75rem; margin-top: 5px; display: inline-block; text-decoration: none;">
+                                    <a href="categories.html"
+                                        style="color: var(--gold-primary); font-size: 0.75rem; margin-top: 5px; display: inline-block; text-decoration: none;">
                                         <i class="fas fa-plus-circle"></i> إدارة الفئات
                                     </a>
                                 </div>
@@ -1374,7 +1378,8 @@
                     <div class="stat-card">
                         <span class="stat-icon"><i class="fas fa-external-link-alt"></i></span>
                         <p class="stat-label">إدارة كاملة</p>
-                        <h2 class="stat-value" style="font-size:1.1rem;"><a href="customers-badges.html" style="color:var(--gold-primary); text-decoration:none;">العملاء والشارات</a></h2>
+                        <h2 class="stat-value" style="font-size:1.1rem;"><a href="customers-badges.html"
+                                style="color:var(--gold-primary); text-decoration:none;">العملاء والشارات</a></h2>
                         <small class="stat-unit">عدد الطلبات + تغيير الشارات</small>
                     </div>
                 </div>
@@ -1382,7 +1387,9 @@
                 <div class="data-table">
                     <div class="table-header">
                         <h3 class="table-title">👥 عرض سريع للعملاء (الأحدث أولاً)</h3>
-                        <a href="customers-badges.html" style="color: var(--gold-primary); font-size: 0.9rem; text-decoration: none;"><i class="fas fa-crown"></i> فتح صفحة العملاء والشارات</a>
+                        <a href="customers-badges.html"
+                            style="color: var(--gold-primary); font-size: 0.9rem; text-decoration: none;"><i
+                                class="fas fa-crown"></i> فتح صفحة العملاء والشارات</a>
                     </div>
                     <div class="table-content">
                         <table>
@@ -1395,7 +1402,10 @@
                                 </tr>
                             </thead>
                             <tbody id="customersTableBody">
-                                <tr><td colspan="4" style="text-align:center;padding:30px;color:#888;"><i class="fas fa-spinner fa-spin"></i> جاري التحميل...</td></tr>
+                                <tr>
+                                    <td colspan="4" style="text-align:center;padding:30px;color:#888;"><i
+                                            class="fas fa-spinner fa-spin"></i> جاري التحميل...</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -1458,37 +1468,49 @@
                     </div>
                     <div class="table-content" style="padding: 25px;">
                         <!-- مسابقة الشراء -->
-                        <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 12px; margin-bottom: 20px; border-right: 4px solid var(--success);">
-                            <div style="color: var(--gold-primary); font-weight: bold; margin-bottom: 10px; font-size: 1.1rem;">
+                        <div
+                            style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 12px; margin-bottom: 20px; border-right: 4px solid var(--success);">
+                            <div
+                                style="color: var(--gold-primary); font-weight: bold; margin-bottom: 10px; font-size: 1.1rem;">
                                 <i class="fas fa-shopping-bag" style="margin-left: 8px;"></i>
                                 ١. مسابقة الشراء (تلقائي)
                             </div>
-                            <div style="color: var(--text-secondary); margin-bottom: 15px;">سحب عشوائي من قائمة المشترين الفعليين - يتم إضافتهم تلقائياً عند الشراء</div>
-                            <a href="contests.html" style="display: inline-block; padding: 10px 20px; background: var(--success); color: white; border-radius: 8px; text-decoration: none; font-weight: bold;">
+                            <div style="color: var(--text-secondary); margin-bottom: 15px;">سحب عشوائي من قائمة المشترين
+                                الفعليين - يتم إضافتهم تلقائياً عند الشراء</div>
+                            <a href="contests.html"
+                                style="display: inline-block; padding: 10px 20px; background: var(--success); color: white; border-radius: 8px; text-decoration: none; font-weight: bold;">
                                 <i class="fas fa-dice"></i> إدارة السحب
                             </a>
                         </div>
 
                         <!-- مسابقة التفاعل -->
-                        <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 12px; margin-bottom: 20px; border-right: 4px solid var(--info);">
-                            <div style="color: var(--gold-primary); font-weight: bold; margin-bottom: 10px; font-size: 1.1rem;">
+                        <div
+                            style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 12px; margin-bottom: 20px; border-right: 4px solid var(--info);">
+                            <div
+                                style="color: var(--gold-primary); font-weight: bold; margin-bottom: 10px; font-size: 1.1rem;">
                                 <i class="fas fa-share-alt" style="margin-left: 8px;"></i>
                                 ٢. مسابقة التفاعل (شروط)
                             </div>
-                            <div style="color: var(--text-secondary); margin-bottom: 15px;">متابعة فيسبوك + تيك توك + مشاركة واتساب - يتم التحقق من استيفاء الشروط</div>
-                            <a href="contests.html" style="display: inline-block; padding: 10px 20px; background: var(--info); color: white; border-radius: 8px; text-decoration: none; font-weight: bold;">
+                            <div style="color: var(--text-secondary); margin-bottom: 15px;">متابعة فيسبوك + تيك توك +
+                                مشاركة واتساب - يتم التحقق من استيفاء الشروط</div>
+                            <a href="contests.html"
+                                style="display: inline-block; padding: 10px 20px; background: var(--info); color: white; border-radius: 8px; text-decoration: none; font-weight: bold;">
                                 <i class="fas fa-cog"></i> إدارة الشروط والسحب
                             </a>
                         </div>
 
                         <!-- مسابقة الأسئلة -->
-                        <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 12px; margin-bottom: 20px; border-right: 4px solid var(--warning);">
-                            <div style="color: var(--gold-primary); font-weight: bold; margin-bottom: 10px; font-size: 1.1rem;">
+                        <div
+                            style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 12px; margin-bottom: 20px; border-right: 4px solid var(--warning);">
+                            <div
+                                style="color: var(--gold-primary); font-weight: bold; margin-bottom: 10px; font-size: 1.1rem;">
                                 <i class="fas fa-question-circle" style="margin-left: 8px;"></i>
                                 ٣. مسابقة الأسئلة
                             </div>
-                            <div style="color: var(--text-secondary); margin-bottom: 15px;">أسئلة عن العسل والمنتجات - يشارك فيها من يجيب إجابة صحيحة</div>
-                            <a href="contests.html" style="display: inline-block; padding: 10px 20px; background: var(--warning); color: var(--bg-primary); border-radius: 8px; text-decoration: none; font-weight: bold;">
+                            <div style="color: var(--text-secondary); margin-bottom: 15px;">أسئلة عن العسل والمنتجات -
+                                يشارك فيها من يجيب إجابة صحيحة</div>
+                            <a href="contests.html"
+                                style="display: inline-block; padding: 10px 20px; background: var(--warning); color: var(--bg-primary); border-radius: 8px; text-decoration: none; font-weight: bold;">
                                 <i class="fas fa-clipboard-list"></i> إدارة الأسئلة والسحب
                             </a>
                         </div>
@@ -1669,9 +1691,9 @@
                                     style="width: 50px; height: 25px; background: #444; border-radius: 25px; cursor: pointer;">
                                 </div>
                             </div>
-                            </div>
                         </div>
                     </div>
+                </div>
             </div>
 
             <!-- التبويب: الصيدلية الطبيعية -->
@@ -1712,15 +1734,19 @@
                                 <form id="healthInfoForm" onsubmit="event.preventDefault(); addHealthInfo();">
                                     <div style="margin-bottom: 15px;">
                                         <label class="form-label">العنوان *</label>
-                                        <input type="text" id="healthInfoTitle" class="form-input" required maxlength="200" placeholder="مثال: فوائد عسل السدر للمناعة">
+                                        <input type="text" id="healthInfoTitle" class="form-input" required
+                                            maxlength="200" placeholder="مثال: فوائد عسل السدر للمناعة">
                                     </div>
 
                                     <div style="margin-bottom: 15px;">
                                         <label class="form-label">الوصف *</label>
-                                        <textarea id="healthInfoDescription" class="form-input" required maxlength="2000" rows="4" placeholder="وصف تفصيلي للمعلومة الطبية..."></textarea>
+                                        <textarea id="healthInfoDescription" class="form-input" required
+                                            maxlength="2000" rows="4"
+                                            placeholder="وصف تفصيلي للمعلومة الطبية..."></textarea>
                                     </div>
 
-                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                                    <div
+                                        style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
                                         <div>
                                             <label class="form-label">الفئة الصحية *</label>
                                             <select id="healthInfoCategory" class="form-input" required>
@@ -1752,7 +1778,8 @@
 
                                     <div style="margin-bottom: 15px;">
                                         <label class="form-label">الحالة الصحية (اختياري)</label>
-                                        <input type="text" id="healthInfoCondition" class="form-input" maxlength="100" placeholder="مثال: السكري، الضغط، إلخ">
+                                        <input type="text" id="healthInfoCondition" class="form-input" maxlength="100"
+                                            placeholder="مثال: السكري، الضغط، إلخ">
                                     </div>
 
                                     <div style="margin-bottom: 15px;">
@@ -1773,37 +1800,44 @@
 
                                     <div style="margin-bottom: 15px;">
                                         <label class="form-label">الأيقونة</label>
-                                        <input type="text" id="healthInfoIcon" class="form-input" maxlength="10" placeholder="🏥" value="🏥">
+                                        <input type="text" id="healthInfoIcon" class="form-input" maxlength="10"
+                                            placeholder="🏥" value="🏥">
                                     </div>
 
                                     <div style="margin-bottom: 15px;">
                                         <label class="form-label">الفوائد (كل فائدة في سطر)</label>
-                                        <textarea id="healthInfoBenefits" class="form-input" rows="5" placeholder="مقوي طبيعي للجهاز المناعي&#10;يساعد في سرعة التئام الجروح&#10;فعال في علاج مشاكل الجهاز الهضمي"></textarea>
+                                        <textarea id="healthInfoBenefits" class="form-input" rows="5"
+                                            placeholder="مقوي طبيعي للجهاز المناعي&#10;يساعد في سرعة التئام الجروح&#10;فعال في علاج مشاكل الجهاز الهضمي"></textarea>
                                     </div>
 
                                     <div style="margin-bottom: 15px;">
                                         <label class="form-label">طريقة الاستخدام (اختياري)</label>
-                                        <textarea id="healthInfoUsage" class="form-input" rows="3" maxlength="1000" placeholder="كيفية استخدام المنتج..."></textarea>
+                                        <textarea id="healthInfoUsage" class="form-input" rows="3" maxlength="1000"
+                                            placeholder="كيفية استخدام المنتج..."></textarea>
                                     </div>
 
                                     <div style="margin-bottom: 15px;">
                                         <label class="form-label">الجرعة المناسبة (اختياري)</label>
-                                        <input type="text" id="healthInfoDosage" class="form-input" maxlength="200" placeholder="مثال: ملعقة صغيرة صباحاً">
+                                        <input type="text" id="healthInfoDosage" class="form-input" maxlength="200"
+                                            placeholder="مثال: ملعقة صغيرة صباحاً">
                                     </div>
 
                                     <div style="margin-bottom: 15px;">
                                         <label class="form-label">التحذيرات (اختياري)</label>
-                                        <textarea id="healthInfoWarnings" class="form-input" rows="2" maxlength="1000" placeholder="تحذيرات مهمة..."></textarea>
+                                        <textarea id="healthInfoWarnings" class="form-input" rows="2" maxlength="1000"
+                                            placeholder="تحذيرات مهمة..."></textarea>
                                     </div>
 
                                     <div style="margin-bottom: 15px;">
                                         <label class="form-label">المصدر العلمي (اختياري)</label>
-                                        <input type="text" id="healthInfoSource" class="form-input" maxlength="500" placeholder="اسم الدراسة أو المصدر">
+                                        <input type="text" id="healthInfoSource" class="form-input" maxlength="500"
+                                            placeholder="اسم الدراسة أو المصدر">
                                     </div>
 
                                     <div style="margin-bottom: 15px;">
                                         <label class="form-label">رابط الدراسة (اختياري)</label>
-                                        <input type="url" id="healthInfoStudyLink" class="form-input" placeholder="https://...">
+                                        <input type="url" id="healthInfoStudyLink" class="form-input"
+                                            placeholder="https://...">
                                     </div>
 
                                     <div style="margin-bottom: 15px;">
@@ -1819,7 +1853,9 @@
                                             <span>إضافة</span>
                                             <span>✨</span>
                                         </button>
-                                        <button type="button" onclick="document.getElementById('healthInfoForm').reset();" class="action-button cancel-button">
+                                        <button type="button"
+                                            onclick="document.getElementById('healthInfoForm').reset();"
+                                            class="action-button cancel-button">
                                             <span>إعادة تعيين</span>
                                         </button>
                                     </div>
@@ -1835,8 +1871,11 @@
                             <div class="table-content" style="padding: 20px;">
                                 <!-- البحث والفلترة -->
                                 <div style="margin-bottom: 20px;">
-                                    <input type="text" id="healthInfoSearch" placeholder="بحث..." oninput="searchHealthInfos(this.value)" style="width: 100%; padding: 12px; background: var(--bg-input); border: 1px solid var(--border-gold); color: var(--text-white); border-radius: 10px; font-size: 1rem; margin-bottom: 10px;">
-                                    <select id="healthInfoFilterCategory" onchange="filterHealthInfos()" style="width: 100%; padding: 12px; background: var(--bg-input); border: 1px solid var(--border-gold); color: var(--text-white); border-radius: 10px; font-size: 1rem;">
+                                    <input type="text" id="healthInfoSearch" placeholder="بحث..."
+                                        oninput="searchHealthInfos(this.value)"
+                                        style="width: 100%; padding: 12px; background: var(--bg-input); border: 1px solid var(--border-gold); color: var(--text-white); border-radius: 10px; font-size: 1rem; margin-bottom: 10px;">
+                                    <select id="healthInfoFilterCategory" onchange="filterHealthInfos()"
+                                        style="width: 100%; padding: 12px; background: var(--bg-input); border: 1px solid var(--border-gold); color: var(--text-white); border-radius: 10px; font-size: 1rem;">
                                         <option value="">جميع الفئات</option>
                                         <option value="immunity">المناعة</option>
                                         <option value="digestion">الهضم</option>
@@ -1866,7 +1905,8 @@
             <div id="backup" class="tab-content">
                 <div style="max-width: 900px; margin: 0 auto;">
                     <div class="profit-summary" style="margin-bottom: 25px;">
-                        <h3 class="table-title" style="margin-bottom: 15px;"><i class="fas fa-database"></i> إحصائيات النسخ الاحتياطية</h3>
+                        <h3 class="table-title" style="margin-bottom: 15px;"><i class="fas fa-database"></i> إحصائيات
+                            النسخ الاحتياطية</h3>
                         <div id="backupStatsArea">جاري التحميل...</div>
                     </div>
                     <div class="actions-grid" style="margin-bottom: 25px;">
@@ -1884,27 +1924,37 @@
                     <div class="data-table">
                         <div class="table-header">
                             <h3 class="table-title"><i class="fas fa-list"></i> قائمة النسخ الاحتياطية</h3>
-                            <button type="button" class="action-button confirm-button" style="padding: 8px 16px; font-size: 0.9rem;" onclick="loadBackupList()"><i class="fas fa-sync-alt"></i> تحديث</button>
+                            <button type="button" class="action-button confirm-button"
+                                style="padding: 8px 16px; font-size: 0.9rem;" onclick="loadBackupList()"><i
+                                    class="fas fa-sync-alt"></i> تحديث</button>
                         </div>
                         <div class="table-content" style="padding: 20px;">
                             <div id="backupListArea">جاري التحميل...</div>
                         </div>
                     </div>
                     <div class="profit-summary" style="margin-top: 25px;">
-                        <h3 class="table-title" style="margin-bottom: 15px;"><i class="fas fa-fingerprint"></i> تسجيل البصمة للدخول السريع</h3>
-                        <p style="color: var(--text-secondary); margin-bottom: 15px;">بعد تسجيل البصمة يمكنك الدخول من صفحة المالك بزر "تسجيل الدخول بالبصمة" دون إدخال كلمة المرور.</p>
-                        <p style="color: var(--gold-primary); font-size: 0.9rem; margin-bottom: 15px;"><i class="fas fa-lock"></i> فقط البصمة التي تُسجّل من هنا (بعد الدخول بكلمة المرور) تسمح بالدخول — لا يقبل النظام غيرها.</p>
-                        <button type="button" class="action-button confirm-button" onclick="registerFingerprint()" id="btnRegisterFingerprint"><i class="fas fa-fingerprint"></i> تسجيل البصمة الآن</button>
+                        <h3 class="table-title" style="margin-bottom: 15px;"><i class="fas fa-fingerprint"></i> تسجيل
+                            البصمة للدخول السريع</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 15px;">بعد تسجيل البصمة يمكنك الدخول من
+                            صفحة المالك بزر "تسجيل الدخول بالبصمة" دون إدخال كلمة المرور.</p>
+                        <p style="color: var(--gold-primary); font-size: 0.9rem; margin-bottom: 15px;"><i
+                                class="fas fa-lock"></i> فقط البصمة التي تُسجّل من هنا (بعد الدخول بكلمة المرور) تسمح
+                            بالدخول — لا يقبل النظام غيرها.</p>
+                        <button type="button" class="action-button confirm-button" onclick="registerFingerprint()"
+                            id="btnRegisterFingerprint"><i class="fas fa-fingerprint"></i> تسجيل البصمة الآن</button>
                         <div id="fingerprintCredentialsList" style="margin-top: 15px;"></div>
                     </div>
                     <div class="profit-summary" style="margin-top: 25px;">
-                        <h3 class="table-title" style="margin-bottom: 15px;"><i class="fas fa-undo"></i> استرجاع من نسخة احتياطية</h3>
-                        <p style="color: var(--text-secondary); margin-bottom: 15px;">اختر نسخة قاعدة البيانات للاسترجاع. تحذير: سيتم استبدال البيانات الحالية.</p>
+                        <h3 class="table-title" style="margin-bottom: 15px;"><i class="fas fa-undo"></i> استرجاع من نسخة
+                            احتياطية</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 15px;">اختر نسخة قاعدة البيانات
+                            للاسترجاع. تحذير: سيتم استبدال البيانات الحالية.</p>
                         <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
                             <select id="restoreSelect" class="form-input" style="max-width: 320px; padding: 12px;">
                                 <option value="">-- اختر ملف استرجاع --</option>
                             </select>
-                            <button type="button" class="action-button cancel-button" onclick="doRestore()" id="btnRestore">استرجاع</button>
+                            <button type="button" class="action-button cancel-button" onclick="doRestore()"
+                                id="btnRestore">استرجاع</button>
                         </div>
                     </div>
                 </div>
@@ -1947,23 +1997,27 @@
                             <div class="table-content" style="padding: 25px;">
                                 <form id="didYouKnowForm" onsubmit="addDidYouKnowItem(event)">
                                     <div style="margin-bottom: 20px;">
-                                        <label style="display: block; margin-bottom: 8px; color: var(--gold-primary); font-weight: 500;">
+                                        <label
+                                            style="display: block; margin-bottom: 8px; color: var(--gold-primary); font-weight: 500;">
                                             المعلومة أو السؤال والجواب
                                         </label>
-                                        <textarea 
-                                            id="didYouKnowText" 
+                                        <textarea id="didYouKnowText"
                                             placeholder="مثال: هل تعلم أن عسل السدر الأصلي لا يفسد أبداً إذا حُفظ في وعاء زجاجي محكم الإغلاق؟"
-                                            maxlength="300" 
-                                            required
+                                            maxlength="300" required
                                             style="width: 100%; padding: 12px 15px; background: var(--bg-input); border: 1px solid var(--border-gold); color: var(--text-white); border-radius: 10px; font-size: 1rem; min-height: 120px; resize: vertical; font-family: inherit;"
                                             oninput="updateDidYouKnowCharCount(); updateDidYouKnowPreview();"></textarea>
-                                        <div id="didYouKnowCharCount" style="text-align: left; margin-top: 5px; color: var(--text-muted); font-size: 0.85rem;">0 / 300</div>
+                                        <div id="didYouKnowCharCount"
+                                            style="text-align: left; margin-top: 5px; color: var(--text-muted); font-size: 0.85rem;">
+                                            0 / 300</div>
                                     </div>
 
-                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                                    <div
+                                        style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
                                         <div>
-                                            <label style="display: block; margin-bottom: 8px; color: var(--gold-primary); font-weight: 500;">الفئة</label>
-                                            <select id="didYouKnowCategory" onchange="updateDidYouKnowPreview();" style="width: 100%; padding: 12px 15px; background: var(--bg-input); border: 1px solid var(--border-gold); color: var(--text-white); border-radius: 10px; font-size: 1rem; font-family: inherit;">
+                                            <label
+                                                style="display: block; margin-bottom: 8px; color: var(--gold-primary); font-weight: 500;">الفئة</label>
+                                            <select id="didYouKnowCategory" onchange="updateDidYouKnowPreview();"
+                                                style="width: 100%; padding: 12px 15px; background: var(--bg-input); border: 1px solid var(--border-gold); color: var(--text-white); border-radius: 10px; font-size: 1rem; font-family: inherit;">
                                                 <option value="health">صحة وطب 🏥</option>
                                                 <option value="science">علم ومعرفة 🔬</option>
                                                 <option value="history">تاريخ وتراث 📜</option>
@@ -1971,8 +2025,10 @@
                                             </select>
                                         </div>
                                         <div>
-                                            <label style="display: block; margin-bottom: 8px; color: var(--gold-primary); font-weight: 500;">الحالة</label>
-                                            <select id="didYouKnowActive" style="width: 100%; padding: 12px 15px; background: var(--bg-input); border: 1px solid var(--border-gold); color: var(--text-white); border-radius: 10px; font-size: 1rem; font-family: inherit;">
+                                            <label
+                                                style="display: block; margin-bottom: 8px; color: var(--gold-primary); font-weight: 500;">الحالة</label>
+                                            <select id="didYouKnowActive"
+                                                style="width: 100%; padding: 12px 15px; background: var(--bg-input); border: 1px solid var(--border-gold); color: var(--text-white); border-radius: 10px; font-size: 1rem; font-family: inherit;">
                                                 <option value="true">نشط (سيظهر في الصفحة الرئيسية)</option>
                                                 <option value="false">غير نشط</option>
                                             </select>
@@ -1980,16 +2036,22 @@
                                     </div>
 
                                     <div style="margin-bottom: 20px;">
-                                        <label style="display: block; margin-bottom: 8px; color: var(--gold-primary); font-weight: 500;">مصدر المعلومة (اختياري)</label>
-                                        <input type="text" id="didYouKnowSource" placeholder="مثال: دراسة نشرت في مجلة العلوم الصحية" style="width: 100%; padding: 12px 15px; background: var(--bg-input); border: 1px solid var(--border-gold); color: var(--text-white); border-radius: 10px; font-size: 1rem; font-family: inherit;">
+                                        <label
+                                            style="display: block; margin-bottom: 8px; color: var(--gold-primary); font-weight: 500;">مصدر
+                                            المعلومة (اختياري)</label>
+                                        <input type="text" id="didYouKnowSource"
+                                            placeholder="مثال: دراسة نشرت في مجلة العلوم الصحية"
+                                            style="width: 100%; padding: 12px 15px; background: var(--bg-input); border: 1px solid var(--border-gold); color: var(--text-white); border-radius: 10px; font-size: 1rem; font-family: inherit;">
                                     </div>
 
                                     <div style="display: flex; gap: 10px;">
-                                        <button type="submit" class="btn-primary" style="flex: 1; padding: 15px 25px; background: linear-gradient(45deg, var(--gold-primary), var(--gold-light)); border: none; border-radius: 12px; color: var(--bg-primary); font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                                        <button type="submit" class="btn-primary"
+                                            style="flex: 1; padding: 15px 25px; background: linear-gradient(45deg, var(--gold-primary), var(--gold-light)); border: none; border-radius: 12px; color: var(--bg-primary); font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 10px;">
                                             <i class="fas fa-paper-plane"></i>
                                             <span>نشر في الصفحة الرئيسية</span>
                                         </button>
-                                        <button type="button" onclick="saveDidYouKnowAsDraft()" style="padding: 15px 25px; background: #444; color: var(--text-white); border: none; border-radius: 12px; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: all 0.3s ease;">
+                                        <button type="button" onclick="saveDidYouKnowAsDraft()"
+                                            style="padding: 15px 25px; background: #444; color: var(--text-white); border: none; border-radius: 12px; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: all 0.3s ease;">
                                             <i class="fas fa-save"></i>
                                             <span>حفظ كمسودة</span>
                                         </button>
@@ -1997,14 +2059,19 @@
                                 </form>
 
                                 <!-- المعاينة -->
-                                <div style="background: rgba(0, 0, 0, 0.3); border: 1px solid var(--border-gold); border-radius: 10px; padding: 15px; margin-top: 20px;">
-                                    <div style="color: var(--gold-primary); font-weight: bold; margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                                <div
+                                    style="background: rgba(0, 0, 0, 0.3); border: 1px solid var(--border-gold); border-radius: 10px; padding: 15px; margin-top: 20px;">
+                                    <div
+                                        style="color: var(--gold-primary); font-weight: bold; margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
                                         <i class="fas fa-eye"></i>
                                         <span>معاينة المعلومة</span>
                                     </div>
-                                    <div style="background: var(--bg-primary); border: 1px solid var(--border-gold); border-radius: 10px; padding: 20px; text-align: center;">
-                                        <div style="font-size: 3rem; color: var(--gold-primary); margin-bottom: 15px;">💡</div>
-                                        <div id="didYouKnowPreviewText" style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6; margin-bottom: 10px;">
+                                    <div
+                                        style="background: var(--bg-primary); border: 1px solid var(--border-gold); border-radius: 10px; padding: 20px; text-align: center;">
+                                        <div style="font-size: 3rem; color: var(--gold-primary); margin-bottom: 15px;">
+                                            💡</div>
+                                        <div id="didYouKnowPreviewText"
+                                            style="color: var(--text-primary); font-size: 1.1rem; line-height: 1.6; margin-bottom: 10px;">
                                             ستظهر المعلومة هنا...
                                         </div>
                                         <small style="color: var(--text-muted);">هل تعلم؟</small>
@@ -2021,8 +2088,11 @@
                             <div class="table-content" style="padding: 20px;">
                                 <!-- البحث -->
                                 <div style="position: relative; margin-bottom: 20px;">
-                                    <input type="text" id="didYouKnowSearch" placeholder="بحث في المعلومات..." oninput="searchDidYouKnowInfos(this.value)" style="width: 100%; padding: 12px 45px 12px 15px; background: var(--bg-input); border: 1px solid var(--border-gold); color: var(--text-white); border-radius: 10px; font-size: 1rem; font-family: inherit;">
-                                    <i class="fas fa-search" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--gold-primary);"></i>
+                                    <input type="text" id="didYouKnowSearch" placeholder="بحث في المعلومات..."
+                                        oninput="searchDidYouKnowInfos(this.value)"
+                                        style="width: 100%; padding: 12px 45px 12px 15px; background: var(--bg-input); border: 1px solid var(--border-gold); color: var(--text-white); border-radius: 10px; font-size: 1rem; font-family: inherit;">
+                                    <i class="fas fa-search"
+                                        style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--gold-primary);"></i>
                                 </div>
 
                                 <!-- قائمة المعلومات -->
@@ -2058,40 +2128,60 @@
                             <h3 class="table-title"><i class="fas fa-barcode"></i> إعدادات الشريط العلوي</h3>
                         </div>
                         <div class="table-content" style="padding: 25px;">
-                            <p style="color: var(--text-muted); margin-bottom: 20px;">يظهر الشريط أعلى الصفحة الرئيسية وصفحات المتجر. يمكنك تغيير النص وتفعيله أو إيقافه من هنا.</p>
+                            <p style="color: var(--text-muted); margin-bottom: 20px;">يظهر الشريط أعلى الصفحة الرئيسية
+                                وصفحات المتجر. يمكنك تغيير النص وتفعيله أو إيقافه من هنا.</p>
                             <form id="siteBannerForm" onsubmit="saveSiteBanner(event)">
                                 <div style="margin-bottom: 20px;">
-                                    <label style="display: block; margin-bottom: 8px; color: var(--gold-primary); font-weight: 500;">نص الشريط</label>
-                                    <textarea id="siteBannerText" required maxlength="500" placeholder="مثال: عرض خاص — خصم ١٠٪ على أول طلب. استخدم كود WELCOME10" oninput="updateSiteBannerCharCount()" style="width: 100%; padding: 12px 15px; background: var(--bg-input); border: 1px solid var(--border-gold); color: var(--text-white); border-radius: 10px; font-size: 1rem; min-height: 80px; resize: vertical; font-family: inherit;"></textarea>
-                                    <div id="siteBannerCharCount" style="text-align: left; margin-top: 5px; color: var(--text-muted); font-size: 0.85rem;">0 / 500</div>
+                                    <label
+                                        style="display: block; margin-bottom: 8px; color: var(--gold-primary); font-weight: 500;">نص
+                                        الشريط</label>
+                                    <textarea id="siteBannerText" required maxlength="500"
+                                        placeholder="مثال: عرض خاص — خصم ١٠٪ على أول طلب. استخدم كود WELCOME10"
+                                        oninput="updateSiteBannerCharCount()"
+                                        style="width: 100%; padding: 12px 15px; background: var(--bg-input); border: 1px solid var(--border-gold); color: var(--text-white); border-radius: 10px; font-size: 1rem; min-height: 80px; resize: vertical; font-family: inherit;"></textarea>
+                                    <div id="siteBannerCharCount"
+                                        style="text-align: left; margin-top: 5px; color: var(--text-muted); font-size: 0.85rem;">
+                                        0 / 500</div>
                                 </div>
                                 <div style="margin-bottom: 20px;">
-                                    <label style="display: block; margin-bottom: 8px; color: var(--gold-primary); font-weight: 500;">رابط عند النقر (اختياري)</label>
-                                    <input type="url" id="siteBannerLink" placeholder="https://..." style="width: 100%; padding: 12px 15px; background: var(--bg-input); border: 1px solid var(--border-gold); color: var(--text-white); border-radius: 10px; font-size: 1rem;">
+                                    <label
+                                        style="display: block; margin-bottom: 8px; color: var(--gold-primary); font-weight: 500;">رابط
+                                        عند النقر (اختياري)</label>
+                                    <input type="url" id="siteBannerLink" placeholder="https://..."
+                                        style="width: 100%; padding: 12px 15px; background: var(--bg-input); border: 1px solid var(--border-gold); color: var(--text-white); border-radius: 10px; font-size: 1rem;">
                                 </div>
-                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                                <div
+                                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
                                     <div>
-                                        <label style="display: block; margin-bottom: 8px; color: var(--gold-primary); font-weight: 500;">الحالة</label>
-                                        <select id="siteBannerActive" style="width: 100%; padding: 12px 15px; background: var(--bg-input); border: 1px solid var(--border-gold); color: var(--text-white); border-radius: 10px; font-size: 1rem;">
+                                        <label
+                                            style="display: block; margin-bottom: 8px; color: var(--gold-primary); font-weight: 500;">الحالة</label>
+                                        <select id="siteBannerActive"
+                                            style="width: 100%; padding: 12px 15px; background: var(--bg-input); border: 1px solid var(--border-gold); color: var(--text-white); border-radius: 10px; font-size: 1rem;">
                                             <option value="true">مفعّل (يظهر للزوار)</option>
                                             <option value="false">معطّل</option>
                                         </select>
                                     </div>
                                     <div>
-                                        <label style="display: block; margin-bottom: 8px; color: var(--gold-primary); font-weight: 500;">سرعة الحركة</label>
-                                        <select id="siteBannerSpeed" style="width: 100%; padding: 12px 15px; background: var(--bg-input); border: 1px solid var(--border-gold); color: var(--text-white); border-radius: 10px; font-size: 1rem;">
+                                        <label
+                                            style="display: block; margin-bottom: 8px; color: var(--gold-primary); font-weight: 500;">سرعة
+                                            الحركة</label>
+                                        <select id="siteBannerSpeed"
+                                            style="width: 100%; padding: 12px 15px; background: var(--bg-input); border: 1px solid var(--border-gold); color: var(--text-white); border-radius: 10px; font-size: 1rem;">
                                             <option value="slow">بطيئة</option>
                                             <option value="medium" selected>متوسطة</option>
                                             <option value="fast">سريعة</option>
                                         </select>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn-primary" style="width: 100%; padding: 15px; background: linear-gradient(45deg, var(--gold-primary), var(--gold-light)); border: none; border-radius: 12px; color: var(--bg-primary); font-weight: bold; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                                <button type="submit" class="btn-primary"
+                                    style="width: 100%; padding: 15px; background: linear-gradient(45deg, var(--gold-primary), var(--gold-light)); border: none; border-radius: 12px; color: var(--bg-primary); font-weight: bold; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;">
                                     <i class="fas fa-save"></i>
                                     <span>حفظ الشريط</span>
                                 </button>
                             </form>
-                            <div id="siteBannerMessage" style="margin-top: 15px; text-align: center; color: var(--gold-primary); font-weight: 500; display: none;"></div>
+                            <div id="siteBannerMessage"
+                                style="margin-top: 15px; text-align: center; color: var(--gold-primary); font-weight: 500; display: none;">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -2135,16 +2225,21 @@
                                 <form id="notificationForm">
                                     <div style="margin-bottom: 20px;">
                                         <label class="form-label">عنوان الإشعار</label>
-                                        <input type="text" class="form-input" id="notificationTitle" placeholder="مثال: عرض الجمعة الذهبية 🍯" maxlength="50">
+                                        <input type="text" class="form-input" id="notificationTitle"
+                                            placeholder="مثال: عرض الجمعة الذهبية 🍯" maxlength="50">
                                     </div>
 
                                     <div style="margin-bottom: 20px;">
                                         <label class="form-label">نص الرسالة</label>
-                                        <textarea class="form-input" id="notificationMessage" placeholder="اكتب تفاصيل العرض هنا..." maxlength="200" rows="4" oninput="updateNotificationCharCount()"></textarea>
-                                        <div style="text-align: left; color: var(--text-muted); font-size: 0.8rem; margin-top: 5px;" id="notificationCharCount">0 / 200</div>
+                                        <textarea class="form-input" id="notificationMessage"
+                                            placeholder="اكتب تفاصيل العرض هنا..." maxlength="200" rows="4"
+                                            oninput="updateNotificationCharCount()"></textarea>
+                                        <div style="text-align: left; color: var(--text-muted); font-size: 0.8rem; margin-top: 5px;"
+                                            id="notificationCharCount">0 / 200</div>
                                     </div>
 
-                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                                    <div
+                                        style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
                                         <div>
                                             <label class="form-label">نوع الإشعار</label>
                                             <select class="form-input" id="notificationType">
@@ -2169,7 +2264,8 @@
                                         </div>
                                     </div>
 
-                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                                    <div
+                                        style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
                                         <div>
                                             <label class="form-label">وقت الإرسال</label>
                                             <select class="form-input" id="sendTime">
@@ -2201,38 +2297,67 @@
                                 <h3 class="table-title"><i class="fas fa-file-alt"></i> قوالب سريعة</h3>
                             </div>
                             <div class="table-content" style="padding: 25px;">
-                                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 20px;">
-                                    <div style="background: rgba(0, 0, 0, 0.3); border: 1px solid var(--border-gold); border-radius: 10px; padding: 15px; cursor: pointer; transition: all 0.3s ease; text-align: center;" onclick="useNotificationTemplate('promo')" onmouseover="this.style.borderColor='var(--gold-primary)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--border-gold)'; this.style.transform='translateY(0)'">
-                                        <div style="font-size: 2rem; color: var(--gold-primary); margin-bottom: 10px;">💰</div>
-                                        <div style="color: var(--text-white); font-weight: bold; margin-bottom: 5px;">عرض ترويجي</div>
-                                        <div style="color: var(--text-secondary); font-size: 0.8rem;">خصومات وعروض خاصة</div>
+                                <div
+                                    style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 20px;">
+                                    <div style="background: rgba(0, 0, 0, 0.3); border: 1px solid var(--border-gold); border-radius: 10px; padding: 15px; cursor: pointer; transition: all 0.3s ease; text-align: center;"
+                                        onclick="useNotificationTemplate('promo')"
+                                        onmouseover="this.style.borderColor='var(--gold-primary)'; this.style.transform='translateY(-3px)'"
+                                        onmouseout="this.style.borderColor='var(--border-gold)'; this.style.transform='translateY(0)'">
+                                        <div style="font-size: 2rem; color: var(--gold-primary); margin-bottom: 10px;">
+                                            💰</div>
+                                        <div style="color: var(--text-white); font-weight: bold; margin-bottom: 5px;">
+                                            عرض ترويجي</div>
+                                        <div style="color: var(--text-secondary); font-size: 0.8rem;">خصومات وعروض خاصة
+                                        </div>
                                     </div>
-                                    <div style="background: rgba(0, 0, 0, 0.3); border: 1px solid var(--border-gold); border-radius: 10px; padding: 15px; cursor: pointer; transition: all 0.3s ease; text-align: center;" onclick="useNotificationTemplate('new')" onmouseover="this.style.borderColor='var(--gold-primary)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--border-gold)'; this.style.transform='translateY(0)'">
-                                        <div style="font-size: 2rem; color: var(--gold-primary); margin-bottom: 10px;">🆕</div>
-                                        <div style="color: var(--text-white); font-weight: bold; margin-bottom: 5px;">منتج جديد</div>
-                                        <div style="color: var(--text-secondary); font-size: 0.8rem;">إطلاق منتج جديد</div>
+                                    <div style="background: rgba(0, 0, 0, 0.3); border: 1px solid var(--border-gold); border-radius: 10px; padding: 15px; cursor: pointer; transition: all 0.3s ease; text-align: center;"
+                                        onclick="useNotificationTemplate('new')"
+                                        onmouseover="this.style.borderColor='var(--gold-primary)'; this.style.transform='translateY(-3px)'"
+                                        onmouseout="this.style.borderColor='var(--border-gold)'; this.style.transform='translateY(0)'">
+                                        <div style="font-size: 2rem; color: var(--gold-primary); margin-bottom: 10px;">
+                                            🆕</div>
+                                        <div style="color: var(--text-white); font-weight: bold; margin-bottom: 5px;">
+                                            منتج جديد</div>
+                                        <div style="color: var(--text-secondary); font-size: 0.8rem;">إطلاق منتج جديد
+                                        </div>
                                     </div>
-                                    <div style="background: rgba(0, 0, 0, 0.3); border: 1px solid var(--border-gold); border-radius: 10px; padding: 15px; cursor: pointer; transition: all 0.3s ease; text-align: center;" onclick="useNotificationTemplate('sale')" onmouseover="this.style.borderColor='var(--gold-primary)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--border-gold)'; this.style.transform='translateY(0)'">
-                                        <div style="font-size: 2rem; color: var(--gold-primary); margin-bottom: 10px;">🔥</div>
-                                        <div style="color: var(--text-white); font-weight: bold; margin-bottom: 5px;">تخفيضات</div>
+                                    <div style="background: rgba(0, 0, 0, 0.3); border: 1px solid var(--border-gold); border-radius: 10px; padding: 15px; cursor: pointer; transition: all 0.3s ease; text-align: center;"
+                                        onclick="useNotificationTemplate('sale')"
+                                        onmouseover="this.style.borderColor='var(--gold-primary)'; this.style.transform='translateY(-3px)'"
+                                        onmouseout="this.style.borderColor='var(--border-gold)'; this.style.transform='translateY(0)'">
+                                        <div style="font-size: 2rem; color: var(--gold-primary); margin-bottom: 10px;">
+                                            🔥</div>
+                                        <div style="color: var(--text-white); font-weight: bold; margin-bottom: 5px;">
+                                            تخفيضات</div>
                                         <div style="color: var(--text-secondary); font-size: 0.8rem;">عروض مخفضة</div>
                                     </div>
-                                    <div style="background: rgba(0, 0, 0, 0.3); border: 1px solid var(--border-gold); border-radius: 10px; padding: 15px; cursor: pointer; transition: all 0.3s ease; text-align: center;" onclick="useNotificationTemplate('event')" onmouseover="this.style.borderColor='var(--gold-primary)'; this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--border-gold)'; this.style.transform='translateY(0)'">
-                                        <div style="font-size: 2rem; color: var(--gold-primary); margin-bottom: 10px;">🎉</div>
-                                        <div style="color: var(--text-white); font-weight: bold; margin-bottom: 5px;">حدث خاص</div>
-                                        <div style="color: var(--text-secondary); font-size: 0.8rem;">مناسبات وأحداث</div>
+                                    <div style="background: rgba(0, 0, 0, 0.3); border: 1px solid var(--border-gold); border-radius: 10px; padding: 15px; cursor: pointer; transition: all 0.3s ease; text-align: center;"
+                                        onclick="useNotificationTemplate('event')"
+                                        onmouseover="this.style.borderColor='var(--gold-primary)'; this.style.transform='translateY(-3px)'"
+                                        onmouseout="this.style.borderColor='var(--border-gold)'; this.style.transform='translateY(0)'">
+                                        <div style="font-size: 2rem; color: var(--gold-primary); margin-bottom: 10px;">
+                                            🎉</div>
+                                        <div style="color: var(--text-white); font-weight: bold; margin-bottom: 5px;">
+                                            حدث خاص</div>
+                                        <div style="color: var(--text-secondary); font-size: 0.8rem;">مناسبات وأحداث
+                                        </div>
                                     </div>
                                 </div>
 
                                 <!-- معاينة الإشعار -->
-                                <div style="background: rgba(0, 0, 0, 0.3); border: 1px solid var(--border-gold); border-radius: 10px; padding: 15px; margin-top: 20px;">
-                                    <div style="color: var(--gold-primary); font-weight: bold; margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+                                <div
+                                    style="background: rgba(0, 0, 0, 0.3); border: 1px solid var(--border-gold); border-radius: 10px; padding: 15px; margin-top: 20px;">
+                                    <div
+                                        style="color: var(--gold-primary); font-weight: bold; margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
                                         <i class="fas fa-eye"></i>
                                         <span>معاينة الإشعار</span>
                                     </div>
-                                    <div style="background: var(--bg-primary); border: 1px solid var(--border-gold); border-radius: 10px; padding: 15px;">
-                                        <div style="color: var(--gold-primary); font-weight: bold; margin-bottom: 5px;" id="notificationPreviewTitle">عنوان الإشعار</div>
-                                        <div style="color: var(--text-primary); font-size: 0.9rem; line-height: 1.4; margin-bottom: 5px;" id="notificationPreviewMessage">نص الرسالة سيظهر هنا...</div>
+                                    <div
+                                        style="background: var(--bg-primary); border: 1px solid var(--border-gold); border-radius: 10px; padding: 15px;">
+                                        <div style="color: var(--gold-primary); font-weight: bold; margin-bottom: 5px;"
+                                            id="notificationPreviewTitle">عنوان الإشعار</div>
+                                        <div style="color: var(--text-primary); font-size: 0.9rem; line-height: 1.4; margin-bottom: 5px;"
+                                            id="notificationPreviewMessage">نص الرسالة سيظهر هنا...</div>
                                         <div style="color: var(--text-muted); font-size: 0.8rem;">الآن</div>
                                     </div>
                                 </div>
@@ -2242,9 +2367,11 @@
 
                     <!-- سجل الإشعارات -->
                     <div class="data-table fade-in">
-                        <div class="table-header" style="display: flex; justify-content: space-between; align-items: center;">
+                        <div class="table-header"
+                            style="display: flex; justify-content: space-between; align-items: center;">
                             <h3 class="table-title"><i class="fas fa-history"></i> سجل الإشعارات</h3>
-                            <button class="action-button danger-button" onclick="clearNotificationHistory()" style="padding: 8px 15px; font-size: 0.9rem;">
+                            <button class="action-button danger-button" onclick="clearNotificationHistory()"
+                                style="padding: 8px 15px; font-size: 0.9rem;">
                                 <i class="fas fa-trash"></i>
                                 <span>مسح السجل</span>
                             </button>
@@ -2264,7 +2391,9 @@
             <!-- التبويب: الإعدادات العامة -->
             <div id="settings" class="tab-content">
                 <div style="max-width: 1000px; margin: 0 auto; padding: 20px;">
-                    <iframe src="settings.html" style="width: 100%; height: calc(100vh - 220px); min-height: 600px; border: 1px solid var(--border-gold); border-radius: 15px; background: var(--bg-card);" title="الإعدادات العامة"></iframe>
+                    <iframe src="settings.html"
+                        style="width: 100%; height: calc(100vh - 220px); min-height: 600px; border: 1px solid var(--border-gold); border-radius: 15px; background: var(--bg-card);"
+                        title="الإعدادات العامة"></iframe>
                 </div>
             </div>
         </div>
@@ -2281,7 +2410,7 @@
 
     <script>
         // إن لم يكن هناك توكن إداري، إعادة التوجيه لصفحة الدخول
-        (function() {
+        (function () {
             const token = typeof getAuthToken === 'function' ? getAuthToken() : (localStorage.getItem('authToken') || localStorage.getItem('adminToken'));
             if (!token && !window.location.pathname.includes('login')) {
                 window.location.replace('login.html');
@@ -2618,7 +2747,7 @@
                     const winnersResponse = await window.API.contests.getWinners();
                     const winners = winnersResponse.winners || winnersResponse.data || [];
                     if (totalWinnersEl) totalWinnersEl.textContent = winners.length;
-                } catch(e) {
+                } catch (e) {
                     if (totalWinnersEl) totalWinnersEl.textContent = '0';
                 }
 
@@ -2832,7 +2961,7 @@
                         if (monthlySalesEl && stats.monthlyRevenue !== undefined) {
                             monthlySalesEl.textContent = (stats.monthlyRevenue || 0).toLocaleString('ar-SA');
                         }
-                    }).catch(() => {});
+                    }).catch(() => { });
                 }
             }, 30000);
         }
@@ -2857,7 +2986,7 @@
                 const cats = data.data || data.categories || [];
                 const select = document.getElementById('productCategory');
                 if (!select) return;
-                
+
                 if (cats.length > 0) {
                     select.innerHTML = '<option value="">اختر الفئة</option>';
                     cats.forEach(cat => {
@@ -3229,7 +3358,7 @@
 
         async function addDidYouKnowItem(event) {
             event.preventDefault();
-            
+
             const text = document.getElementById('didYouKnowText').value.trim();
             const category = document.getElementById('didYouKnowCategory').value;
             const active = document.getElementById('didYouKnowActive').value === 'true';
@@ -3243,7 +3372,7 @@
             try {
                 showNotification('جاري إرسال المعلومة...', 'info');
                 const token = API.getAuthToken();
-                
+
                 const response = await fetch('/api/did-you-know', {
                     method: 'POST',
                     headers: {
@@ -3289,7 +3418,7 @@
             try {
                 showNotification('جاري حفظ المسودة...', 'info');
                 const token = API.getAuthToken();
-                
+
                 const response = await fetch('/api/did-you-know', {
                     method: 'POST',
                     headers: {
@@ -3333,10 +3462,10 @@
 
                 if (data.success && data.items && data.items.length > 0) {
                     didYouKnowAllItems = data.items;
-                    
+
                     // عرض جميع المعلومات
                     listContainer.innerHTML = data.items.map(item => createDidYouKnowItem(item)).join('');
-                    
+
                     // عرض المعلومات المنشورة فقط في القائمة الجانبية
                     const published = data.items.filter(item => item.active);
                     if (publishedContainer) {
@@ -3352,7 +3481,7 @@
                         publishedContainer.innerHTML = '<div style="text-align: center; padding: 20px; color: var(--text-muted);">لا توجد معلومات منشورة</div>';
                     }
                 }
-                
+
                 updateDidYouKnowStats();
             } catch (error) {
                 console.error('Error loading did you know list:', error);
@@ -3484,7 +3613,7 @@
                 }
                 updateDidYouKnowCharCount();
                 updateDidYouKnowPreview();
-                
+
                 // حذف المعلومة القديمة بعد التعديل
                 if (confirm('سيتم حذف المعلومة القديمة بعد التعديل. هل تريد المتابعة؟')) {
                     await deleteDidYouKnowItem(id, false);
@@ -3526,7 +3655,7 @@
             if (!publishedContainer) return;
 
             const filtered = query ?
-                didYouKnowAllItems.filter(item => 
+                didYouKnowAllItems.filter(item =>
                     item.text.toLowerCase().includes(query.toLowerCase()) && item.active
                 ) :
                 didYouKnowAllItems.filter(item => item.active);
@@ -3542,12 +3671,12 @@
             const total = didYouKnowAllItems.length;
             const published = didYouKnowAllItems.filter(item => item.active).length;
             const drafts = didYouKnowAllItems.filter(item => !item.active).length;
-            
+
             const totalEl = document.getElementById('totalInfo');
             const publishedEl = document.getElementById('publishedInfo');
             const draftEl = document.getElementById('draftInfo');
             const viewsEl = document.getElementById('viewsCount');
-            
+
             if (totalEl) totalEl.textContent = total;
             if (publishedEl) publishedEl.textContent = published;
             if (draftEl) draftEl.textContent = drafts;
@@ -4027,10 +4156,10 @@
                     console.warn('API not available');
                     return;
                 }
-                
+
                 const response = await window.API.notifications.getAll({ limit: 50 });
                 const notifications = response.notifications || response.data || [];
-                
+
                 displayNotificationHistory(notifications);
             } catch (error) {
                 console.error('Error loading notification history:', error);
@@ -4040,43 +4169,43 @@
                 }
             }
         }
-        
+
         async function loadNotificationStats() {
             try {
                 if (!window.API || !window.API.notifications) {
                     return;
                 }
-                
+
                 const response = await window.API.notifications.getAll({ limit: 1000 });
                 const notifications = response.notifications || response.data || [];
-                
+
                 const today = new Date();
                 today.setHours(0, 0, 0, 0);
-                
+
                 const sentToday = notifications.filter(n => {
                     const notifDate = new Date(n.createdAt);
                     return notifDate >= today;
                 }).length;
-                
+
                 const customersResponse = await window.API.customers.getAll({ limit: 1000 });
                 const customers = customersResponse.data || customersResponse.customers || [];
                 const totalUsers = customers.length;
-                
+
                 const delivered = notifications.filter(n => n.delivered).length;
                 const read = notifications.filter(n => n.read).length;
                 const deliveredRate = notifications.length > 0 ? Math.round((delivered / notifications.length) * 100) : 0;
                 const readRate = notifications.length > 0 ? Math.round((read / notifications.length) * 100) : 0;
-                
+
                 const totalUsersEl = document.getElementById('notificationTotalUsers');
                 const sentTodayEl = document.getElementById('notificationSentToday');
                 const deliveredRateEl = document.getElementById('notificationDeliveredRate');
                 const readRateEl = document.getElementById('notificationReadRate');
-                
+
                 if (totalUsersEl) totalUsersEl.textContent = totalUsers;
                 if (sentTodayEl) sentTodayEl.textContent = sentToday;
                 if (deliveredRateEl) deliveredRateEl.textContent = deliveredRate + '%';
                 if (readRateEl) readRateEl.textContent = readRate + '%';
-                
+
             } catch (error) {
                 console.error('Error loading notification stats:', error);
             }
@@ -4085,7 +4214,7 @@
         function displayNotificationHistory(notifications) {
             const historyList = document.getElementById('notificationHistoryList');
             if (!historyList) return;
-            
+
             if (notifications.length === 0) {
                 historyList.innerHTML = `
                     <div style="text-align: center; padding: 40px; color: var(--text-muted);">
@@ -4095,7 +4224,7 @@
                 `;
                 return;
             }
-            
+
             historyList.innerHTML = notifications.map(notif => {
                 const statusClass = notif.read ? 'status-sent' : notif.delivered ? 'status-pending' : 'status-failed';
                 const statusText = notif.read ? 'مقروء' : notif.delivered ? 'مُسلم' : 'فشل';
@@ -4106,7 +4235,7 @@
                     hour: '2-digit',
                     minute: '2-digit'
                 });
-                
+
                 return `
                     <div style="background: rgba(0, 0, 0, 0.3); border: 1px solid var(--border-gold); border-radius: 10px; padding: 15px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; transition: all 0.3s ease;" onmouseover="this.style.borderColor='var(--gold-primary)'" onmouseout="this.style.borderColor='var(--border-gold)'">
                         <div style="flex: 1;">
@@ -4137,10 +4266,10 @@
         }
 
         // إرسال النموذج
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const notificationForm = document.getElementById('notificationForm');
             if (notificationForm) {
-                notificationForm.addEventListener('submit', async function(e) {
+                notificationForm.addEventListener('submit', async function (e) {
                     e.preventDefault();
 
                     const title = document.getElementById('notificationTitle').value;
@@ -4218,19 +4347,81 @@
     </script>
 
     <style>
-        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; width: 100%; background: rgba(45, 38, 18, 0.98); backdrop-filter: blur(20px); display: flex; justify-content: space-around; align-items: center; padding: 12px 0 calc(12px + env(safe-area-inset-bottom)); border-top: 2px solid rgba(212, 175, 55, 0.4); z-index: 1000; box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.6); }
-        .bottom-nav .nav-item { color: #d4af37; text-align: center; font-size: 0.85rem; opacity: 0.7; cursor: pointer; transition: all 0.3s ease; padding: 8px 12px; border-radius: 12px; display: flex; flex-direction: column; align-items: center; gap: 4px; font-family: 'Cairo', 'Tajawal', sans-serif; min-width: 60px; text-decoration: none; }
-        .bottom-nav .nav-item i { font-size: 1.3rem; transition: all 0.3s ease; }
-        .bottom-nav .nav-item span { font-size: 0.75rem; font-weight: 500; }
-        .bottom-nav .nav-item:hover { opacity: 1; background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); transform: translateY(-2px); text-shadow: 0 0 8px rgba(212, 175, 55, 0.5); }
-        .bottom-nav .nav-item.active { opacity: 1; color: #f3cf7a; background: rgba(212, 175, 55, 0.15); border: 1px solid rgba(212, 175, 55, 0.4); text-shadow: 0 0 10px rgba(212, 175, 55, 0.6); transform: translateY(-2px); box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3); }
-        .bottom-nav .nav-item.active i { transform: scale(1.1); }
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            background: rgba(45, 38, 18, 0.98);
+            backdrop-filter: blur(20px);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 12px 0 calc(12px + env(safe-area-inset-bottom));
+            border-top: 2px solid rgba(212, 175, 55, 0.4);
+            z-index: 1000;
+            box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        .bottom-nav .nav-item {
+            color: #d4af37;
+            text-align: center;
+            font-size: 0.85rem;
+            opacity: 0.7;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 8px 12px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            font-family: 'Cairo', 'Tajawal', sans-serif;
+            min-width: 60px;
+            text-decoration: none;
+        }
+
+        .bottom-nav .nav-item i {
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+
+        .bottom-nav .nav-item span {
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .bottom-nav .nav-item:hover {
+            opacity: 1;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            transform: translateY(-2px);
+            text-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+        }
+
+        .bottom-nav .nav-item.active {
+            opacity: 1;
+            color: #f3cf7a;
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .bottom-nav .nav-item.active i {
+            transform: scale(1.1);
+        }
     </style>
     <nav class="bottom-nav">
         <div class="nav-item active"><i class="fas fa-crown"></i><span>لوحة التحكم</span></div>
-        <div class="nav-item" onclick="window.location.href='create-order.html'"><i class="fas fa-plus-circle"></i><span>طلب جديد</span></div>
-        <div class="nav-item" onclick="window.location.href='products.html'"><i class="fas fa-box-open"></i><span>المنتجات</span></div>
-        <div class="nav-item" onclick="window.location.href='reports.html'"><i class="fas fa-chart-line"></i><span>التقارير</span></div>
+        <div class="nav-item" onclick="window.location.href='create-order.html'"><i
+                class="fas fa-plus-circle"></i><span>طلب جديد</span></div>
+        <div class="nav-item" onclick="window.location.href='products.html'"><i
+                class="fas fa-box-open"></i><span>المنتجات</span></div>
+        <div class="nav-item" onclick="window.location.href='reports.html'"><i
+                class="fas fa-chart-line"></i><span>التقارير</span></div>
     </nav>
 
 </body>

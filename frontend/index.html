@@ -15,6 +15,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Cairo:wght@200;300;400;500;600;700;800;900;1000&family=Tajawal:wght@200;300;400;500;700;800;900&family=Reem+Kufi+Ink:wght@400;500;600;700&display=swap"
         rel="stylesheet">
+
+    <!-- Vercel Analytics -->
+    <script src="https://cdn.vercel-insights.com/v1/script.js"></script>
+
     <!-- Modern Design System -->
     <link rel="stylesheet" href="assets/css/modern-design.css">
     <link rel="stylesheet" href="assets/css/realistic-honey-drips.css">
@@ -24,9 +28,20 @@
     <style>
         body.hide-prices .price-tag,
         body.hide-prices .old-price,
-        body.hide-prices .price-container { visibility: hidden; }
-        body.orders-disabled .btn-add { pointer-events: none; opacity: 0.6; cursor: not-allowed; }
-        body.orders-disabled a[href*="checkout"] { pointer-events: none; opacity: 0.7; }
+        body.hide-prices .price-container {
+            visibility: hidden;
+        }
+
+        body.orders-disabled .btn-add {
+            pointer-events: none;
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        body.orders-disabled a[href*="checkout"] {
+            pointer-events: none;
+            opacity: 0.7;
+        }
     </style>
     <!-- Modern Animations -->
     <script src="assets/js/modern-animations.js" defer></script>
@@ -74,7 +89,10 @@
         }
 
         /* ===== الخلفية الذهبية المتحركة ===== */
-        html { overflow-x: hidden; }
+        html {
+            overflow-x: hidden;
+        }
+
         body {
             margin: 0;
             padding: 0;
@@ -340,6 +358,7 @@
             color: #f4c025;
             animation: titleGradientFlow 5s ease-in-out infinite, titleShine 4s ease-in-out infinite;
         }
+
         .animated-title::after {
             content: '';
             position: absolute;
@@ -353,21 +372,55 @@
             border-radius: 2px;
             animation: titleUnderline 3s ease-in-out 0.5s infinite, lineGradientMove 4s linear infinite;
         }
+
         @keyframes titleGradientFlow {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
         }
+
         @keyframes titleShine {
-            0%, 100% { filter: drop-shadow(0 0 10px rgba(244, 192, 37, 0.5)); }
-            50% { filter: drop-shadow(0 0 22px rgba(244, 192, 37, 0.8)) drop-shadow(0 0 35px rgba(230, 184, 0, 0.4)); }
+
+            0%,
+            100% {
+                filter: drop-shadow(0 0 10px rgba(244, 192, 37, 0.5));
+            }
+
+            50% {
+                filter: drop-shadow(0 0 22px rgba(244, 192, 37, 0.8)) drop-shadow(0 0 35px rgba(230, 184, 0, 0.4));
+            }
         }
+
         @keyframes titleUnderline {
-            0%, 100% { transform: translateX(-50%) scaleX(0); opacity: 0.7; }
-            50% { transform: translateX(-50%) scaleX(1); opacity: 1; }
+
+            0%,
+            100% {
+                transform: translateX(-50%) scaleX(0);
+                opacity: 0.7;
+            }
+
+            50% {
+                transform: translateX(-50%) scaleX(1);
+                opacity: 1;
+            }
         }
+
         @keyframes lineGradientMove {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
         }
 
         /* الشريط العلوي المتحرك (من لوحة التحكم) */
@@ -381,9 +434,10 @@
             color: var(--dark-brown);
             font-weight: 600;
             font-size: 0.95rem;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
             border-bottom: 2px solid rgba(212, 175, 55, 0.6);
         }
+
         .site-top-banner-inner {
             display: flex;
             align-items: center;
@@ -391,6 +445,7 @@
             padding: 10px 44px 10px 16px;
             overflow: hidden;
         }
+
         .site-top-banner-marquee-wrap {
             flex: 1;
             overflow: hidden;
@@ -398,19 +453,36 @@
             color: inherit;
             display: block;
         }
+
         .site-top-banner-text {
             display: inline-block;
             padding-left: 100%;
             white-space: nowrap;
             animation: site-banner-marquee 20s linear infinite;
         }
-        .site-top-banner.speed-slow .site-top-banner-text { animation-duration: 28s; }
-        .site-top-banner.speed-medium .site-top-banner-text { animation-duration: 20s; }
-        .site-top-banner.speed-fast .site-top-banner-text { animation-duration: 14s; }
-        @keyframes site-banner-marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
+
+        .site-top-banner.speed-slow .site-top-banner-text {
+            animation-duration: 28s;
         }
+
+        .site-top-banner.speed-medium .site-top-banner-text {
+            animation-duration: 20s;
+        }
+
+        .site-top-banner.speed-fast .site-top-banner-text {
+            animation-duration: 14s;
+        }
+
+        @keyframes site-banner-marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
         .site-top-banner-close {
             position: absolute;
             right: 8px;
@@ -420,7 +492,7 @@
             height: 32px;
             border: none;
             border-radius: 50%;
-            background: rgba(0,0,0,0.2);
+            background: rgba(0, 0, 0, 0.2);
             color: var(--dark-brown);
             cursor: pointer;
             display: flex;
@@ -429,9 +501,11 @@
             font-size: 0.9rem;
             transition: background 0.2s;
         }
+
         .site-top-banner-close:hover {
-            background: rgba(0,0,0,0.35);
+            background: rgba(0, 0, 0, 0.35);
         }
+
         body.top-banner-visible {
             padding-top: 52px;
         }
@@ -445,11 +519,12 @@
             position: relative;
             overflow: hidden;
             border-radius: 0 0 24px 24px;
-            background: linear-gradient(135deg, rgba(26,15,0,0.92) 0%, rgba(45,30,10,0.95) 50%, rgba(26,15,0,0.92) 100%);
+            background: linear-gradient(135deg, rgba(26, 15, 0, 0.92) 0%, rgba(45, 30, 10, 0.95) 50%, rgba(26, 15, 0, 0.92) 100%);
             border: 1px solid rgba(244, 192, 37, 0.25);
             border-top: none;
-            box-shadow: 0 12px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(244,192,37,0.1);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(244, 192, 37, 0.1);
         }
+
         .store-banner::before {
             content: '';
             position: absolute;
@@ -457,14 +532,24 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(244,192,37,0.08), transparent);
+            background: linear-gradient(90deg, transparent, rgba(244, 192, 37, 0.08), transparent);
             animation: bannerShine 4s ease-in-out infinite;
         }
+
         @keyframes bannerShine {
-            0% { left: -100%; }
-            60% { left: 100%; }
-            100% { left: 100%; }
+            0% {
+                left: -100%;
+            }
+
+            60% {
+                left: 100%;
+            }
+
+            100% {
+                left: 100%;
+            }
         }
+
         .store-banner-text {
             font-family: 'Amiri', serif;
             font-size: clamp(1.5rem, 5vw, 2.4rem);
@@ -473,13 +558,15 @@
             letter-spacing: 0.08em;
             position: relative;
             display: inline-block;
-            text-shadow: 0 0 20px rgba(244,192,37,0.5);
+            text-shadow: 0 0 20px rgba(244, 192, 37, 0.5);
             animation: bannerGlow 2.5s ease-in-out infinite;
         }
+
         .store-banner-text span {
             display: inline-block;
             animation: bannerFloat 3s ease-in-out infinite;
         }
+
         .store-banner-tag {
             font-family: 'Cairo', sans-serif;
             font-size: 0.75rem;
@@ -488,13 +575,29 @@
             margin-top: 4px;
             letter-spacing: 0.15em;
         }
+
         @keyframes bannerGlow {
-            0%, 100% { text-shadow: 0 0 15px rgba(244,192,37,0.5), 0 0 30px rgba(244,192,37,0.2); }
-            50% { text-shadow: 0 0 25px rgba(244,192,37,0.7), 0 0 50px rgba(244,192,37,0.3); }
+
+            0%,
+            100% {
+                text-shadow: 0 0 15px rgba(244, 192, 37, 0.5), 0 0 30px rgba(244, 192, 37, 0.2);
+            }
+
+            50% {
+                text-shadow: 0 0 25px rgba(244, 192, 37, 0.7), 0 0 50px rgba(244, 192, 37, 0.3);
+            }
         }
+
         @keyframes bannerFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-2px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-2px);
+            }
         }
 
         /* إعلان / بانر اسم المتجر — خط وحركة أنيقة */
@@ -505,6 +608,7 @@
             margin-bottom: 10px;
             overflow: hidden;
         }
+
         .store-banner::before {
             content: '';
             position: absolute;
@@ -514,10 +618,19 @@
             animation: bannerShine 6s ease-in-out infinite;
             pointer-events: none;
         }
+
         @keyframes bannerShine {
-            0%, 100% { background-position: 100% 0; }
-            50% { background-position: 0% 0; }
+
+            0%,
+            100% {
+                background-position: 100% 0;
+            }
+
+            50% {
+                background-position: 0% 0;
+            }
         }
+
         .store-banner-inner {
             position: relative;
             display: inline-block;
@@ -525,8 +638,9 @@
             border: 2px solid rgba(244, 192, 37, 0.35);
             border-radius: 8px;
             background: linear-gradient(180deg, rgba(45, 38, 18, 0.6) 0%, rgba(26, 15, 0, 0.85) 100%);
-            box-shadow: 0 4px 25px rgba(0,0,0,0.4), inset 0 1px 0 rgba(244, 192, 37, 0.15);
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(244, 192, 37, 0.15);
         }
+
         .store-banner-text {
             font-family: 'Amiri', serif;
             font-size: clamp(1.75rem, 5vw, 2.5rem);
@@ -536,10 +650,19 @@
             text-shadow: 0 0 20px rgba(244, 192, 37, 0.5);
             animation: bannerGlow 3s ease-in-out infinite;
         }
+
         @keyframes bannerGlow {
-            0%, 100% { text-shadow: 0 0 20px rgba(244, 192, 37, 0.5), 0 2px 4px rgba(0,0,0,0.3); }
-            50% { text-shadow: 0 0 28px rgba(244, 192, 37, 0.75), 0 0 40px rgba(244, 192, 37, 0.4), 0 2px 4px rgba(0,0,0,0.3); }
+
+            0%,
+            100% {
+                text-shadow: 0 0 20px rgba(244, 192, 37, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3);
+            }
+
+            50% {
+                text-shadow: 0 0 28px rgba(244, 192, 37, 0.75), 0 0 40px rgba(244, 192, 37, 0.4), 0 2px 4px rgba(0, 0, 0, 0.3);
+            }
         }
+
         .store-banner-tag {
             font-family: 'Cairo', sans-serif;
             font-size: 0.8rem;
@@ -577,17 +700,39 @@
             border-radius: 2px;
             animation: taglineLine 1.5s ease-out 0.6s both;
         }
+
         @keyframes taglineFade {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 0.95; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 0.95;
+                transform: translateY(0);
+            }
         }
+
         @keyframes taglineGradientFlow {
-            0%, 100% { background-position: 0% center; }
-            50% { background-position: 100% center; }
+
+            0%,
+            100% {
+                background-position: 0% center;
+            }
+
+            50% {
+                background-position: 100% center;
+            }
         }
+
         @keyframes taglineLine {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         /* روابط الهيدر */
@@ -917,15 +1062,38 @@
 
         /* استجابة الموبايل والتابلت — منع التداخل والتمرير الأفقي */
         @media (max-width: 768px) {
-            .product-slider { padding: 0 12px 16px; gap: 14px; }
-            .product-card { min-width: 240px; padding: 16px; }
-            .product-info h3 { font-size: 1.05rem; min-height: auto; }
-            .app-container { padding: 0 12px 20px; }
-            #products.app-card { padding: 12px 16px; }
-            #products.app-card h2 { font-size: 1.1rem; }
+            .product-slider {
+                padding: 0 12px 16px;
+                gap: 14px;
+            }
+
+            .product-card {
+                min-width: 240px;
+                padding: 16px;
+            }
+
+            .product-info h3 {
+                font-size: 1.05rem;
+                min-height: auto;
+            }
+
+            .app-container {
+                padding: 0 12px 20px;
+            }
+
+            #products.app-card {
+                padding: 12px 16px;
+            }
+
+            #products.app-card h2 {
+                font-size: 1.1rem;
+            }
         }
+
         @media (max-width: 480px) {
-            .product-card { min-width: 220px; }
+            .product-card {
+                min-width: 220px;
+            }
         }
 
         .badge-vip {
@@ -1488,7 +1656,10 @@
         }
 
         /* قائمة المزيد المنسدلة */
-        .nav-more-wrap { position: relative; }
+        .nav-more-wrap {
+            position: relative;
+        }
+
         .nav-more-dropdown {
             display: none;
             position: absolute;
@@ -1507,7 +1678,11 @@
             list-style: none;
             margin: 0 0 8px 0;
         }
-        .nav-more-dropdown.open { display: block; }
+
+        .nav-more-dropdown.open {
+            display: block;
+        }
+
         .nav-more-dropdown a {
             display: flex;
             align-items: center;
@@ -1524,8 +1699,15 @@
             box-sizing: border-box;
             font-family: 'Cairo', sans-serif;
         }
-        .nav-more-dropdown a:hover { background: rgba(244, 192, 37, 0.15); }
-        .nav-more-dropdown a i { font-size: 1.1rem; width: 22px; }
+
+        .nav-more-dropdown a:hover {
+            background: rgba(244, 192, 37, 0.15);
+        }
+
+        .nav-more-dropdown a i {
+            font-size: 1.1rem;
+            width: 22px;
+        }
 
         /* ===== ظ…ط³ط§ط­ط© ظ„ظ„ط´ط±ظٹط· ط§ظ„ط³ظپظ„ظٹ ===== */
         .content-spacer {
@@ -1565,9 +1747,11 @@
             opacity: 0;
             transition: opacity 0.45s ease;
         }
+
         .welcome-modal[style*="flex"] {
             opacity: 1;
         }
+
         .welcome-modal.welcome-modal-visible {
             opacity: 1;
         }
@@ -1619,6 +1803,7 @@
                 opacity: 0;
                 transform: translateY(40px) scale(0.96);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0) scale(1);
@@ -1635,9 +1820,19 @@
             box-shadow: 0 0 12px rgba(244, 192, 37, 0.5);
             animation: welcomeLineFlow 3s ease-in-out infinite;
         }
+
         @keyframes welcomeLineFlow {
-            0%, 100% { background-position: 0% 50%; opacity: 0.9; }
-            50% { background-position: 100% 50%; opacity: 1; }
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+                opacity: 0.9;
+            }
+
+            50% {
+                background-position: 100% 50%;
+                opacity: 1;
+            }
         }
 
         .welcome-icon {
@@ -1645,13 +1840,29 @@
             margin-bottom: 16px;
             animation: welcomeIconIn 0.6s ease-out both, float 3s ease-in-out 1s infinite;
         }
+
         @keyframes welcomeIconIn {
-            from { opacity: 0; transform: scale(0.8) translateY(-10px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
+            from {
+                opacity: 0;
+                transform: scale(0.8) translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
         }
+
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
         }
 
         .welcome-title {
@@ -1663,9 +1874,17 @@
             text-shadow: 0 0 14px rgba(244, 192, 37, 0.45);
             animation: welcomeTitleFade 0.8s ease-out 0.2s both;
         }
+
         @keyframes welcomeTitleFade {
-            from { opacity: 0; transform: translateY(-8px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .welcome-text {
@@ -1676,15 +1895,25 @@
             text-align: center;
             font-family: 'Cairo', sans-serif;
         }
+
         .welcome-text.welcome-intro {
             font-size: 1.05rem;
             margin-bottom: 20px;
             animation: welcomeTextFade 0.7s ease-out 0.35s both;
         }
+
         @keyframes welcomeTextFade {
-            from { opacity: 0; transform: translateY(6px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
         .welcome-sub {
             color: var(--gold);
             font-size: 0.98rem;
@@ -1692,13 +1921,16 @@
             font-weight: 600;
             font-family: 'Cairo', sans-serif;
         }
+
         .welcome-features {
             margin-bottom: 18px;
         }
+
         .welcome-features li {
             justify-content: center;
             text-align: center;
         }
+
         .welcome-features li span {
             color: var(--gold);
         }
@@ -1731,14 +1963,24 @@
             box-shadow: 0 4px 20px rgba(244, 192, 37, 0.35);
             animation: welcomeBtnIn 0.5s ease-out 0.5s both;
         }
+
         @keyframes welcomeBtnIn {
-            from { opacity: 0; transform: translateY(12px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
         .welcome-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 28px rgba(244, 192, 37, 0.5);
         }
+
         .welcome-btn:active {
             transform: translateY(0);
         }
@@ -2118,7 +2360,8 @@
             <a href="#" id="siteTopBannerLink" class="site-top-banner-marquee-wrap">
                 <span class="site-top-banner-text" id="siteTopBannerText"></span>
             </a>
-            <button type="button" class="site-top-banner-close" id="siteTopBannerClose" title="إغلاق" aria-label="إغلاق">
+            <button type="button" class="site-top-banner-close" id="siteTopBannerClose" title="إغلاق"
+                aria-label="إغلاق">
                 <i class="fas fa-times"></i>
             </button>
         </div>
@@ -2346,7 +2589,8 @@
             <span>السلة</span>
         </div>
         <div class="nav-more-wrap">
-            <div class="nav-item" id="navMoreBtn" onclick="toggleNavMore(event)" role="button" aria-expanded="false" aria-haspopup="true">
+            <div class="nav-item" id="navMoreBtn" onclick="toggleNavMore(event)" role="button" aria-expanded="false"
+                aria-haspopup="true">
                 <i class="fas fa-ellipsis-h"></i>
                 <span>المزيد</span>
             </div>
@@ -2821,10 +3065,10 @@
                     html += `
                         <a href="pages/product-details.html?category=${cat.slug || cat._id}" style="scroll-snap-align:start; flex-shrink:0; text-decoration:none; display:flex; flex-direction:column; align-items:center; gap:8px; width:85px; cursor:pointer; transition:transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
                             <div style="width:65px; height:65px; border-radius:50%; overflow:hidden; background:linear-gradient(135deg, rgba(212,175,55,0.15), rgba(26,15,0,0.8)); display:flex; align-items:center; justify-content:center; font-size:1.5rem; box-shadow:0 4px 15px rgba(0,0,0,0.3); border:2px solid rgba(212,175,55,0.3);">
-                                ${hasImage 
-                                    ? `<img src="${cat.image}" alt="${cat.name}" style="width:100%; height:100%; object-fit:cover;" onerror="this.parentElement.innerHTML='<span style=font-size:1.8rem>${cat.icon || '📦'}</span>'">`
-                                    : `<span style="font-size:1.8rem">${cat.icon || '📦'}</span>`
-                                }
+                                ${hasImage
+                            ? `<img src="${cat.image}" alt="${cat.name}" style="width:100%; height:100%; object-fit:cover;" onerror="this.parentElement.innerHTML='<span style=font-size:1.8rem>${cat.icon || '📦'}</span>'">`
+                            : `<span style="font-size:1.8rem">${cat.icon || '📦'}</span>`
+                        }
                             </div>
                             <span style="font-size:0.75rem; color:#f5e6c8; font-weight:600; text-align:center; line-height:1.3; max-width:85px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${cat.name}</span>
                             <span style="font-size:0.6rem; color:#8a7a5a;">${cat.productsCount || 0} منتج</span>
@@ -3298,7 +3542,8 @@
                     <i class="fas fa-images" style="margin-left:6px;"></i> الحالات والإعلانات
                 </h3>
             </div>
-            <div id="storiesContainer" style="display:flex; gap:12px; overflow-x:auto; padding-bottom:10px; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;">
+            <div id="storiesContainer"
+                style="display:flex; gap:12px; overflow-x:auto; padding-bottom:10px; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;">
                 <!-- تُملأ من API عند التحميل -->
             </div>
         </div>
@@ -3306,12 +3551,14 @@
         <!-- قسم الفئات الديناميكي -->
         <div id="categoriesSection" style="display:none; margin-bottom: 20px;">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
-                <h3 style="color:var(--app-gold, #d4af37); margin:0; font-size:1.1rem; display:flex; align-items:center; gap:8px;">
+                <h3
+                    style="color:var(--app-gold, #d4af37); margin:0; font-size:1.1rem; display:flex; align-items:center; gap:8px;">
                     <i class="fas fa-layer-group"></i>
                     تصفح حسب الفئة
                 </h3>
             </div>
-            <div id="categoriesScroller" style="display:flex; gap:12px; overflow-x:auto; padding-bottom:10px; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;">
+            <div id="categoriesScroller"
+                style="display:flex; gap:12px; overflow-x:auto; padding-bottom:10px; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;">
                 <!-- سيتم ملؤها تلقائياً من loadCategories() -->
             </div>
         </div>
