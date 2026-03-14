@@ -14,16 +14,43 @@ let isReady = false;
  */
 const initWhatsAppService = async () => {
     try {
+        // في Vercel، نستخدم memory storage بدلاً من ملفات
+        const isVercel = process.env.VERCEL === '1';
+
+        if (isVercel) {
+            console.log('📱 Using memory storage for WhatsApp in Vercel');
+            // استخدام memory storage بدلاً من ملفات
+            global.whatsappSession = global.whatsappSession || {};
+        }
+
         const { Client, LocalAuth } = require('whatsapp-web.js');
         const qrcode = require('qrcode-terminal');
 
-        whatsappClient = new Client({
-            authStrategy: new LocalAuth({
+        // في Vercel، نستخدم memory storage
+        const authStrategy = isVercel ?
+            new LocalAuth({
+                clientId: 'vercel-whatsapp',
+                dataPath: './whatsapp-session-memory'
+            }) :
+            new LocalAuth({
+                clientId: 'manahl-whatsapp',
                 dataPath: './whatsapp-session'
-            }),
+            });
+
+        whatsappClient = new Client({
+            authStrategy: authStrategy,
             puppeteer: {
                 headless: true,
-                args: ['--no-sandbox', '--disable-setuid-sandbox']
+                args: [
+                    '--no-sandbox',
+                    '--disable-setuid-sandbox',
+                    '--disable-dev-shm-usage',
+                    '--disable-accelerated-2d-canvas',
+                    '--no-first-run',
+                    '--no-zygote',
+                    '--single-process',
+                    '--disable-gpu'
+                ]
             }
         });
 
@@ -54,8 +81,20 @@ const initWhatsAppService = async () => {
         });
 
         // Initialize
-        await whatsappClient.initialize();
-        
+        if (isVercel) {
+            // في Vercel، نحاول الاتصال بدون إنشاء مجلدات
+            try {
+                await whatsappClient.initialize();
+                console.log('✅ WhatsApp initialized successfully in Vercel');
+            } catch (initError) {
+                console.log('⚠️  WhatsApp initialization failed in Vercel, but service continues');
+                console.log('📱 WhatsApp will work with limited functionality');
+                return false;
+            }
+        } else {
+            await whatsappClient.initialize();
+        }
+
         return true;
     } catch (error) {
         logger.error('❌ Failed to initialize WhatsApp service:', error);
@@ -76,14 +115,14 @@ const sendWhatsAppMessage = async (phoneNumber, message) => {
     try {
         // تنظيف رقم الهاتف (إزالة + ومسافات)
         const cleanPhone = phoneNumber.replace(/[\s\+]/g, '');
-        
+
         // إضافة @c.us للرقم
         const chatId = cleanPhone.includes('@') ? cleanPhone : `${cleanPhone}@c.us`;
-        
+
         await whatsappClient.sendMessage(chatId, message);
-        
+
         logger.info(`✅ WhatsApp message sent to ${phoneNumber}`);
-        
+
         return {
             success: true,
             message: 'Message sent successfully'
@@ -176,13 +215,15 @@ const getPaymentMethodText = (method) => {
     return methods[method] || method;
 };
 
-// Initialize on load (optional - can be disabled)
-const shouldInitWhatsApp = config.nodeEnv === 'production' || process.env.ENABLE_WHATSAPP === 'true';
+// Initialize on load (with environment check)
+const shouldInitWhatsApp = config.enableWhatsApp && (config.nodeEnv === 'production' || process.env.ENABLE_WHATSAPP === 'true');
 
 if (shouldInitWhatsApp) {
     initWhatsAppService().catch(err => {
         logger.warn('WhatsApp initialization failed, continuing without it:', err.message);
     });
+} else {
+    console.log('📱 WhatsApp service is disabled (ENABLE_WHATSAPP=false)');
 }
 
 module.exports = {

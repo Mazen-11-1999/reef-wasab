@@ -286,6 +286,7 @@ app.use('/api/health-info', require('./routes/healthInfoRoutes'));
 app.use('/api/site-banner', require('./routes/siteBannerRoutes'));
 app.use('/api/site-settings', require('./routes/siteSettingsRoutes'));
 app.use('/api/map', require('./routes/mapRoutes'));
+app.use('/api/whatsapp', require('./routes/whatsappRoutes'));
 
 // ============================================
 // OLD ROUTES (للتوافق مع الكود الحالي)

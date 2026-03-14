@@ -26,13 +26,17 @@ const config = {
     port: process.env.PORT || 3000,
     nodeEnv: process.env.NODE_ENV || 'development',
     frontendUrl: process.env.FRONTEND_URL || 'http://localhost:3000',
-    
+
+    // WhatsApp Settings
+    enableWhatsApp: process.env.ENABLE_WHATSAPP === 'true',
+    whatsappTimeout: process.env.WHATSAPP_TIMEOUT || 30000,
+
     // WebAuthn
     rpID: process.env.RP_ID || 'localhost',
 
     // Database
     mongodbUri: process.env.MONGODB_URI || 'mongodb://localhost:27017/manahl-badr',
-    
+
     // JWT
     jwtSecret: process.env.JWT_SECRET || 'your-super-secret-jwt-key-change-this-in-production',
     jwtExpire: process.env.JWT_EXPIRE || '24h',
