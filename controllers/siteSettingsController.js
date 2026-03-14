@@ -24,6 +24,30 @@ async function getOrCreateSettings() {
  * الحصول على الإعدادات للعرض العام (بدون مصادقة) - للصفحة الرئيسية والزوار
  */
 exports.getPublic = catchAsync(async (req, res, next) => {
+    // التحقق من اتصال قاعدة البيانات
+    const db = require('../config/database');
+    if (!db.mongoose.connection.readyState || db.mongoose.connection.readyState !== 1) {
+        // إرجاع بيانات وهمية إذا لم تتصل قاعدة البيانات
+        return res.status(200).json({
+            success: true,
+            settings: {
+                storeName: 'مناحل ريف وصاب',
+                storeNameEn: 'Reef Wasab Apiaries',
+                description: 'أجود أنواع العسل اليمني الأصيل من جبال وصاب الشاهقة',
+                address: 'صنعاء - اليمن',
+                phone: '+967 771 885 223',
+                email: 'info@reef-wasab.com',
+                socialMedia: {
+                    facebook: 'https://facebook.com/reef-wasab',
+                    instagram: 'https://instagram.com/reef-wasab',
+                    twitter: 'https://twitter.com/reef-wasab'
+                },
+                logo: '/assets/manahel.jpg',
+                storyGallery: []
+            }
+        });
+    }
+
     const settings = await getOrCreateSettings();
     res.status(200).json({
         success: true,
