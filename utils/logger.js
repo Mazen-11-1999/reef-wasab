@@ -9,17 +9,12 @@ const fs = require('fs');
 const config = require('../config/env');
 
 // التحقق من بيئة Vercel
-const isVercel = process.env.VERCEL === '1' || process.env.NODE_ENV === 'production';
+const isVercel = process.env.VERCEL === '1';
 
-// إنشاء مجلد logs فقط إذا لم نكن في Vercel
-let logsDir = path.join(__dirname, '..', 'logs');
-if (!isVercel && !fs.existsSync(logsDir)) {
-    fs.mkdirSync(logsDir, { recursive: true });
-}
-
-// في Vercel، لا نستخدم ملفات السجلات
+// في Vercel، لا نستخدم ملفات السجلات أبداً
 if (isVercel) {
-    logsDir = null; // لا نستخدم الملفات في Vercel
+    // لا ننشئ أي مجلدات في Vercel
+    console.log('📝 Vercel environment detected - using console logging only');
 }
 
 // تنسيق السجلات
@@ -46,29 +41,45 @@ const consoleFormat = winston.format.combine(
 // إنشاء transports للـ logger
 const transports = [];
 
-// في بيئة التطوير، أضف Console transport
-if (config.nodeEnv !== 'production') {
+// في Vercel، نستخدم Console فقط
+if (isVercel) {
     transports.push(new winston.transports.Console({
-        format: consoleFormat
+        format: winston.format.combine(
+            winston.format.timestamp(),
+            winston.format.json()
+        )
     }));
-}
+} else {
+    // في بيئة التطوير، أضف Console transport
+    if (config.nodeEnv !== 'production') {
+        transports.push(new winston.transports.Console({
+            format: consoleFormat
+        }));
+    }
 
-// في بيئة الإنتاج المحلية، أضف ملفات السجلات
-if (!isVercel && config.nodeEnv === 'production') {
-    // كتابة الأخطاء في ملف منفصل
-    transports.push(new winston.transports.File({
-        filename: path.join(logsDir, 'error.log'),
-        level: 'error',
-        maxsize: 5242880, // 5MB
-        maxFiles: 5,
-    }));
+    // في بيئة الإنتاج المحلية، أضف ملفات السجلات
+    if (config.nodeEnv === 'production') {
+        // إنشاء مجلد logs فقط في البيئة المحلية
+        let logsDir = path.join(__dirname, '..', 'logs');
+        if (!fs.existsSync(logsDir)) {
+            fs.mkdirSync(logsDir, { recursive: true });
+        }
 
-    // كتابة جميع السجلات في ملف
-    transports.push(new winston.transports.File({
-        filename: path.join(logsDir, 'combined.log'),
-        maxsize: 5242880, // 5MB
-        maxFiles: 5,
-    }));
+        // كتابة الأخطاء في ملف منفصل
+        transports.push(new winston.transports.File({
+            filename: path.join(logsDir, 'error.log'),
+            level: 'error',
+            maxsize: 5242880, // 5MB
+            maxFiles: 5,
+        }));
+
+        // كتابة جميع السجلات في ملف
+        transports.push(new winston.transports.File({
+            filename: path.join(logsDir, 'combined.log'),
+            maxsize: 5242880, // 5MB
+            maxFiles: 5,
+        }));
+    }
 }
 
 // إنشاء Logger
@@ -81,6 +92,12 @@ const logger = winston.createLogger({
 
 // معالجة الاستثناءات غير المعالجة (فقط في البيئة المحلية)
 if (!isVercel) {
+    // إنشاء مجلد logs فقط في البيئة المحلية
+    let logsDir = path.join(__dirname, '..', 'logs');
+    if (!fs.existsSync(logsDir)) {
+        fs.mkdirSync(logsDir, { recursive: true });
+    }
+
     logger.exceptions = new winston.transports.File({
         filename: path.join(logsDir, 'exceptions.log'),
     });
@@ -91,7 +108,11 @@ if (!isVercel) {
 }
 
 // دوال مساعدة
-logger.info('✅ Logger initialized');
+if (!isVercel) {
+    logger.info('✅ Logger initialized');
+} else {
+    logger.info('✅ Logger initialized (Vercel - Console only)');
+}
 
 module.exports = logger;
 
